@@ -1,0 +1,170 @@
+/* [project]/src/app/components/About/about.module.css [app-client] (css) */
+.about-module__7oxdpa__about {
+  padding: 7rem 2rem;
+}
+
+.about-module__7oxdpa__container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.about-module__7oxdpa__header {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .75rem;
+  margin-bottom: 3.5rem;
+  display: flex;
+}
+
+.about-module__7oxdpa__tag {
+  border: 1px solid var(--border);
+  background: var(--accent-soft);
+  color: var(--accent);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  border-radius: 99px;
+  align-items: center;
+  gap: .4rem;
+  padding: .3rem .8rem;
+  font-size: .75rem;
+  font-weight: 600;
+  display: inline-flex;
+}
+
+.about-module__7oxdpa__title {
+  letter-spacing: -.03em;
+  color: var(--text);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+}
+
+.about-module__7oxdpa__grid {
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 4rem;
+  display: grid;
+}
+
+.about-module__7oxdpa__bio {
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+.about-module__7oxdpa__stats {
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  display: flex;
+}
+
+.about-module__7oxdpa__stat {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  min-width: 90px;
+  transition: border-color var(--transition), transform .2s ease;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .2rem;
+  padding: 1rem 1.25rem;
+  display: flex;
+}
+
+.about-module__7oxdpa__stat:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.about-module__7oxdpa__statIcon {
+  color: var(--accent);
+}
+
+.about-module__7oxdpa__statValue {
+  letter-spacing: -.03em;
+  color: var(--text);
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.about-module__7oxdpa__statLabel {
+  color: var(--text-muted);
+  font-size: .75rem;
+  font-weight: 500;
+}
+
+.about-module__7oxdpa__skillsTitle {
+  color: var(--text);
+  letter-spacing: -.01em;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.about-module__7oxdpa__skillsList {
+  flex-direction: column;
+  gap: 1.1rem;
+  display: flex;
+}
+
+.about-module__7oxdpa__skillTop {
+  justify-content: space-between;
+  margin-bottom: .4rem;
+  display: flex;
+}
+
+.about-module__7oxdpa__skillLabel {
+  color: var(--text);
+  font-family: JetBrains Mono, monospace;
+  font-size: .88rem;
+  font-weight: 500;
+}
+
+.about-module__7oxdpa__skillPercent {
+  color: var(--accent);
+  font-family: JetBrains Mono, monospace;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+.about-module__7oxdpa__bar {
+  background: var(--border);
+  border-radius: 99px;
+  height: 5px;
+  overflow: hidden;
+}
+
+.about-module__7oxdpa__barFill {
+  height: 100%;
+  width: var(--w, 0%);
+  background: linear-gradient(90deg, var(--accent), #a78bfa);
+  transform-origin: 0;
+  border-radius: 99px;
+  animation: 1s cubic-bezier(.4, 0, .2, 1) .2s both about-module__7oxdpa__grow;
+}
+
+@keyframes about-module__7oxdpa__grow {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (max-width: 900px) {
+  .about-module__7oxdpa__grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-module__7oxdpa__about {
+    padding: 5rem 1.5rem;
+  }
+}
+
+/*# sourceMappingURL=src_app_components_About_about_module_css_bad6b30c._.single.css.map*/

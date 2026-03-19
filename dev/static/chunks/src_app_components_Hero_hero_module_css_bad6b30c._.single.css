@@ -1,0 +1,275 @@
+/* [project]/src/app/components/Hero/hero.module.css [app-client] (css) */
+.hero-module__Tbk_VW__hero {
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 5rem);
+  padding: 4rem 2rem;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-module__Tbk_VW__grid {
+  background-image: radial-gradient(var(--text-dim) 1px, transparent 1px);
+  opacity: .35;
+  background-size: 32px 32px;
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image: radial-gradient(80% 80%, #000 40%, #0000 100%);
+  mask-image: radial-gradient(80% 80%, #000 40%, #0000 100%);
+}
+
+.hero-module__Tbk_VW__orb1 {
+  background: var(--accent-glow);
+  filter: blur(100px);
+  pointer-events: none;
+  border-radius: 50%;
+  width: 500px;
+  height: 500px;
+  animation: 8s ease-in-out infinite hero-module__Tbk_VW__floatOrb;
+  position: absolute;
+  top: -100px;
+  left: -150px;
+}
+
+.hero-module__Tbk_VW__orb2 {
+  filter: blur(90px);
+  pointer-events: none;
+  background: #5ca8fc26;
+  border-radius: 50%;
+  width: 350px;
+  height: 350px;
+  animation: 10s ease-in-out infinite reverse hero-module__Tbk_VW__floatOrb;
+  position: absolute;
+  bottom: -80px;
+  right: -100px;
+}
+
+@keyframes hero-module__Tbk_VW__floatOrb {
+  0%, 100% {
+    transform: translateY(0)scale(1);
+  }
+
+  50% {
+    transform: translateY(-30px)scale(1.05);
+  }
+}
+
+.hero-module__Tbk_VW__container {
+  z-index: 1;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 780px;
+  display: flex;
+  position: relative;
+}
+
+.hero-module__Tbk_VW__badge {
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--accent);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  border-radius: 99px;
+  align-items: center;
+  gap: .4rem;
+  padding: .35rem .9rem;
+  font-size: .78rem;
+  font-weight: 600;
+  animation: .6s .1s both hero-module__Tbk_VW__fadeInUp;
+  display: inline-flex;
+}
+
+.hero-module__Tbk_VW__heading {
+  flex-direction: column;
+  gap: .2rem;
+  display: flex;
+}
+
+.hero-module__Tbk_VW__line {
+  color: var(--text-muted);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 500;
+  animation: .6s .2s both hero-module__Tbk_VW__fadeInUp;
+}
+
+.hero-module__Tbk_VW__name {
+  letter-spacing: -.04em;
+  background: linear-gradient(135deg, var(--text) 30%, var(--accent) 100%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-size: clamp(3.5rem, 10vw, 7rem);
+  font-weight: 800;
+  line-height: 1;
+  animation: .6s .3s both hero-module__Tbk_VW__fadeInUp;
+}
+
+.hero-module__Tbk_VW__line2 {
+  color: var(--text-muted);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 500;
+  animation: .6s .4s both hero-module__Tbk_VW__fadeInUp;
+}
+
+.hero-module__Tbk_VW__line2 em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.hero-module__Tbk_VW__sub {
+  color: var(--text-muted);
+  max-width: 560px;
+  font-family: JetBrains Mono, monospace;
+  font-size: .88rem;
+  line-height: 1.75;
+  animation: .6s .5s both hero-module__Tbk_VW__fadeInUp;
+}
+
+.hero-module__Tbk_VW__cta {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .75rem;
+  animation: .6s .6s both hero-module__Tbk_VW__fadeInUp;
+  display: flex;
+}
+
+.hero-module__Tbk_VW__btnPrimary {
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--radius);
+  box-shadow: 0 0 0 0 var(--accent-glow);
+  align-items: center;
+  gap: .5rem;
+  padding: .75rem 1.6rem;
+  font-size: .9rem;
+  font-weight: 600;
+  transition: transform .2s, box-shadow .2s;
+  display: inline-flex;
+}
+
+.hero-module__Tbk_VW__btnPrimary:hover {
+  box-shadow: 0 8px 30px var(--accent-glow);
+  transform: translateY(-2px);
+}
+
+.hero-module__Tbk_VW__btnSecondary {
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text);
+  border-radius: var(--radius);
+  align-items: center;
+  padding: .75rem 1.6rem;
+  font-size: .9rem;
+  font-weight: 600;
+  transition: border-color .2s, background .2s, transform .2s;
+  display: inline-flex;
+}
+
+.hero-module__Tbk_VW__btnSecondary:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  transform: translateY(-2px);
+}
+
+.hero-module__Tbk_VW__socials {
+  gap: .5rem;
+  animation: .6s .7s both hero-module__Tbk_VW__fadeInUp;
+  display: flex;
+}
+
+.hero-module__Tbk_VW__socialLink {
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  width: 40px;
+  height: 40px;
+  color: var(--text-muted);
+  transition: color var(--transition), border-color var(--transition), transform .2s ease;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.hero-module__Tbk_VW__socialLink:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.hero-module__Tbk_VW__scrollHint {
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  flex-direction: column;
+  align-items: center;
+  gap: .4rem;
+  font-size: .7rem;
+  animation: 1s 1.2s both hero-module__Tbk_VW__fadeIn;
+  display: flex;
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hero-module__Tbk_VW__scrollLine {
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  width: 1px;
+  height: 40px;
+  animation: 2s ease-in-out infinite hero-module__Tbk_VW__scrollPulse;
+}
+
+@keyframes hero-module__Tbk_VW__scrollPulse {
+  0%, 100% {
+    opacity: .3;
+    transform: scaleY(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleY(.7);
+  }
+}
+
+@keyframes hero-module__Tbk_VW__fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-module__Tbk_VW__fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-module__Tbk_VW__hero {
+    padding: 3rem 1.5rem;
+  }
+
+  .hero-module__Tbk_VW__cta {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .hero-module__Tbk_VW__btnPrimary, .hero-module__Tbk_VW__btnSecondary {
+    justify-content: center;
+  }
+}
+
+/*# sourceMappingURL=src_app_components_Hero_hero_module_css_bad6b30c._.single.css.map*/

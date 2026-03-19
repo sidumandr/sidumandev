@@ -1,0 +1,84 @@
+/* [project]/src/app/globals.css [app-client] (css) */
+*, :before, :after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --accent: #7c5cfc;
+  --accent-glow: #7c5cfc59;
+  --accent-soft: #7c5cfc1f;
+  --radius: 12px;
+  --transition: .3s cubic-bezier(.4, 0, .2, 1);
+}
+
+[data-theme="dark"] {
+  --bg: #080810;
+  --bg-card: #0f0f1a;
+  --bg-card-hover: #14142a;
+  --border: #ffffff12;
+  --text: #e8e6f0;
+  --text-muted: #7a7890;
+  --text-dim: #3e3d55;
+  --nav-bg: #080810d9;
+}
+
+[data-theme="light"] {
+  --bg: #f4f3fb;
+  --bg-card: #fff;
+  --bg-card-hover: #f0efff;
+  --border: #00000014;
+  --text: #1a1830;
+  --text-muted: #6b6880;
+  --text-dim: #c0bdd8;
+  --nav-bg: #f4f3fbd9;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Syne, sans-serif;
+  transition: background .4s, color .4s;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 99px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/*# sourceMappingURL=src_app_globals_css_bad6b30c._.single.css.map*/

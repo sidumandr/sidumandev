@@ -1,0 +1,10 @@
+.body {
+  margin: 0;
+  padding: 0;
+  font-family: "Syne", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition:
+    background 0.4s ease,
+    color 0.4s ease;
+}
