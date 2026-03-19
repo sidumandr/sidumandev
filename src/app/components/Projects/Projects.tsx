@@ -48,6 +48,16 @@ const projects = [
     live: "#",
     featured: false,
   },
+  {
+    title: "Mersin Arslan Nakliyat",
+    description:
+      "Bir nakliyat firması için kurumsal web sitesini uçtan uca geliştirdim. Responsive UI, custom navigation (mobile menu, dropdown, outside click handling) ve kullanıcı etkileşimlerini React ile implemente ettim. SEO ve performans optimizasyonları ile projeyi production kalitesine ulaştırdım. Projenin yayına alınması ve repository yönetimi ekip arkadaşım tarafından gerçekleştirildi.",
+    tags: ["Next.js", "Typescript", "Bootstrap"],
+    github:
+      "https://github.com/sevketemingurbuz/mersin-arslan-nakliyat-1/tree/main",
+    live: "#",
+    featured: false,
+  },
 ];
 
 const Projects = () => {
