@@ -55,7 +55,7 @@ const projects = [
     tags: ["Next.js", "Typescript", "Bootstrap"],
     github:
       "https://github.com/sevketemingurbuz/mersin-arslan-nakliyat-1/tree/main",
-    live: "#",
+    live: "https://www.mersinarslannakliyat.com/",
     featured: false,
   },
 ];
