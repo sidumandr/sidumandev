@@ -8,7 +8,15 @@ const projects = [
     title: "Book Tracker App",
     description:
       "Okuma yolculuğunuzu düzenleyen ve dijital kütüphanenizi oluşturmanıza olanak tanıyan bir takip platformu. Basit, hızlı ve kullanıcı deneyimi odaklı bir arayüzle kitap yönetimini kolaylaştırır.",
-    tags: ["Next.js", "TypeScript", "C#", ".NET", "PostgreSQL", "Docker"],
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "C#",
+      ".NET",
+      "PostgreSQL",
+      "Docker",
+      "Shadcn UI",
+    ],
     github: "https://github.com/sidumandr/book-tracker",
     live: "https://sidbooktracker.vercel.app",
     featured: true,
@@ -17,9 +25,17 @@ const projects = [
     title: "Cinapil",
     description:
       "'Cinephile' tutkusunu modern API mimarisiyle buluşturan dinamik bir film rehberi. Gerçek zamanlı veri senkronizasyonu ve performans odaklı arayüzü ile sinema dünyasını parmaklarınızın ucuna getirir.",
-    tags: ["Next.js", "Typescript", "Shadcn UI"],
+    tags: [
+      "Next.js",
+      "Typescript",
+      "C#",
+      ".NET",
+      "PostgreSQL",
+      "Docker",
+      "Daisy UI",
+    ],
     github: "https://github.com/sidumandr/react-film-app",
-    live: "#",
+    live: "https://cinapil.vercel.app/",
     featured: true,
   },
   {
