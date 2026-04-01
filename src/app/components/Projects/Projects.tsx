@@ -5,20 +5,12 @@ import styles from "./projects.module.css";
 
 const projects = [
   {
-    title: "Book Tracker App",
+    title: "Sidufy",
     description:
-      "Okuma yolculuğunuzu düzenleyen ve dijital kütüphanenizi oluşturmanıza olanak tanıyan bir takip platformu. Basit, hızlı ve kullanıcı deneyimi odaklı bir arayüzle kitap yönetimini kolaylaştırır.",
-    tags: [
-      "Next.js",
-      "TypeScript",
-      "C#",
-      ".NET",
-      "PostgreSQL",
-      "Docker",
-      "Shadcn UI",
-    ],
-    github: "https://github.com/sidumandr/book-tracker",
-    live: "https://sidbooktracker.vercel.app",
+      "Dinamik ses yönetimi ve akıcı kullanıcı deneyimini merkeze alan, kişiselleştirilebilir bir müzik çalar uygulaması. Şarkı listeleri, çalma kontrolleri ve görselleştirilmiş ses dalgaları ile müziği dijital dünyayla buluşturur.",
+    tags: ["React", "Typescript", "Zustand", "Django", "Shadcn UI"],
+    github: "https://github.com/sidumandr/Music-Streaming-Service",
+    live: "https://sidufy.vercel.app/",
     featured: true,
   },
   {
@@ -39,13 +31,21 @@ const projects = [
     featured: true,
   },
   {
-    title: "Sidufy",
+    title: "Book Tracker App",
     description:
-      "Dinamik ses yönetimi ve akıcı kullanıcı deneyimini merkeze alan, kişiselleştirilebilir bir müzik çalar uygulaması. Şarkı listeleri, çalma kontrolleri ve görselleştirilmiş ses dalgaları ile müziği dijital dünyayla buluşturur.",
-    tags: ["React", "Typescript", "Zustand", "Django", "Shadcn UI"],
-    github: "https://github.com/sidumandr/Music-Streaming-Service",
-    live: "https://sidufy.vercel.app/",
-    featured: false,
+      "Okuma yolculuğunuzu düzenleyen ve dijital kütüphanenizi oluşturmanıza olanak tanıyan bir takip platformu. Basit, hızlı ve kullanıcı deneyimi odaklı bir arayüzle kitap yönetimini kolaylaştırır.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "C#",
+      ".NET",
+      "PostgreSQL",
+      "Docker",
+      "Shadcn UI",
+    ],
+    github: "https://github.com/sidumandr/book-tracker",
+    live: "https://sidbooktracker.vercel.app",
+    featured: true,
   },
   {
     title: "SidusChat",
@@ -98,7 +98,12 @@ const Projects = () => {
               key={i}
             >
               {project.featured && (
-                <span className={styles.featuredBadge}>Featured</span>
+                <span
+                  className={styles.featuredBadge}
+                  style={{ textTransform: "none" }}
+                >
+                  Popüler
+                </span>
               )}
 
               <div className={styles.cardTop}>
