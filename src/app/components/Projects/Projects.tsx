@@ -44,7 +44,7 @@ const projects = [
       "Dinamik ses yönetimi ve akıcı kullanıcı deneyimini merkeze alan, kişiselleştirilebilir bir müzik çalar uygulaması. Şarkı listeleri, çalma kontrolleri ve görselleştirilmiş ses dalgaları ile müziği dijital dünyayla buluşturur.",
     tags: ["React", "Typescript", "Zustand", "Django", "Shadcn UI"],
     github: "https://github.com/sidumandr/Music-Streaming-Service",
-    live: "#",
+    live: "https://sidufy.vercel.app/",
     featured: false,
   },
   {
