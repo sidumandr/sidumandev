@@ -1,0 +1,2 @@
+.status { display:inline-flex; align-items:baseline; gap:8px; font:400 12px/20px var(--font-mono),monospace; color:var(--ink-muted); }
+.dot { display:inline-block; width:8px; height:8px; flex-shrink:0; background:var(--yellow); border:1px solid var(--yellow-edge); border-radius:50%; animation:status-pulse 2.4s ease-in-out infinite; }
