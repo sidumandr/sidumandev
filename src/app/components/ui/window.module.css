@@ -1,0 +1,5 @@
+.window { border:1px solid var(--line-control); padding:24px; position:relative; min-width:0; background:var(--bg); }
+.titleBar { position:absolute; top:-11px; left:16px; right:16px; display:flex; align-items:center; justify-content:space-between; gap:8px; pointer-events:none; font:500 12px/20px var(--font-mono),monospace; }
+.titleBar>span { background:var(--bg); padding-inline:8px; }
+.meta { color:var(--ink-faint); }
+@media(max-width:720px) { .window { padding:20px; } }
