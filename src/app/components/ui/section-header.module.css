@@ -1,0 +1,8 @@
+.header { margin-bottom:48px; }
+.command { display:flex; align-items:center; gap:12px; margin-bottom:24px; }
+.index { background:var(--yellow); border:1px solid var(--yellow-edge); color:var(--on-yellow); padding:1px 5px; font:600 12px/18px var(--font-mono),monospace; }
+.rule { height:1px; background:var(--line); flex:1; min-width:12px; }
+.title { font:600 56px/1 var(--font-mono),monospace; letter-spacing:-.04em; max-width:100%; overflow-wrap:break-word; }
+.subtitle { margin-top:16px; color:var(--ink-muted); font-size:18px; line-height:28px; max-width:700px; }
+.subtitle>span { color:var(--ink-faint); font-family:var(--font-mono),monospace; }
+@media(max-width:720px) { .title { font-size:36px; } .subtitle { font-size:16px; line-height:26px; } .command { gap:10px; } }
