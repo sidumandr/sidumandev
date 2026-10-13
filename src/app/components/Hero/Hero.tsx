@@ -1,80 +1,13 @@
-"use client";
-
-import { ArrowDown, Github, Linkedin, Mail, Sparkles } from "lucide-react";
+import { identity } from "@/data/identity";
+import { profile } from "@/data/profile";
+import { Button } from "../ui/Button";
+import { Icon } from "../ui/Icon";
+import { JsonBlock } from "../ui/JsonBlock";
+import { Prompt } from "../ui/Prompt";
+import { TextLink } from "../ui/TextLink";
+import { Window } from "../ui/Window";
+import { TerminalBackground } from "./TerminalBackground";
 import styles from "./hero.module.css";
-
-const Hero = () => {
-  return (
-    <section className={styles.hero} id="hero">
-      {/* Background grid */}
-      <div className={styles.grid} aria-hidden="true" />
-      {/* Glow orbs */}
-      <div className={styles.orb1} aria-hidden="true" />
-      <div className={styles.orb2} aria-hidden="true" />
-
-      <div className={styles.container}>
-        <div className={styles.badge}>
-          <span>Full-Stack Developer</span>
-        </div>
-
-        <h1 className={styles.heading}>
-          <span className={styles.line}>Merhaba, ben</span>
-          <span className={styles.name}>Safa İlhan Duman</span>
-          <span className={styles.line2}>
-            Kod yazıyorum, <em>deneyim</em> inşa ediyorum.
-          </span>
-        </h1>
-
-        <p className={styles.sub}>
-          Frontend&apos;den backend&apos;e uzanan bir yelpazede modern, hızlı ve
-          kullanıcı odaklı uygulamalar geliştiriyorum.
-        </p>
-
-        <div className={styles.cta}>
-          <a href="#projects" className={styles.btnPrimary}>
-            Projeleri Gör
-            <ArrowDown size={16} />
-          </a>
-          <a href="#contact" className={styles.btnSecondary}>
-            İletişime Geç
-          </a>
-        </div>
-
-        <div className={styles.socials}>
-          <a
-            href="https://github.com/sidumandr"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.socialLink}
-            aria-label="GitHub"
-          >
-            <Github size={18} />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/safa-ilhan-duman-5796b6256/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.socialLink}
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={18} />
-          </a>
-          <a
-            href="mailto:dumansafailhan@gmail.com"
-            className={styles.socialLink}
-            aria-label="Email"
-          >
-            <Mail size={18} />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.scrollHint}>
-        <div className={styles.scrollLine} />
-        <span>scroll</span>
-      </div>
-    </section>
-  );
-};
-
-export default Hero;
+export default function Hero() {
+  return <section className={styles.hero} id="hero" aria-labelledby="hero-title"><TerminalBackground/><div className={"container "+styles.container}><div className={styles.layout}><div className={styles.session}><div className={styles.whoami}><Prompt command="whoami"/></div><h1 id="hero-title" className={styles.name}>Safa İlhan<br/>Duman<span className={styles.cursor} aria-hidden="true"/></h1><div className={styles.role}><Prompt command="cat rol.txt"/><p><span aria-hidden="true">&gt; </span>{identity.role}</p></div><p className={styles.slogan}>Kod yazıyorum, <mark>deneyim</mark> inşa ediyorum.</p><p className={styles.description}>Frontend&apos;den backend&apos;e uzanan bir yelpazede modern, hızlı ve kullanıcı odaklı uygulamalar geliştiriyorum.</p><div className={styles.actions}><Button href="#projects" variant="primary">Projeleri gör <Icon name="down"/></Button><Button href="#contact">İletişime geç</Button></div><div className={styles.socials}><TextLink href={identity.github} external bracket>github</TextLink><TextLink href={identity.linkedin} external bracket>linkedin</TextLink><TextLink href={"mailto:"+identity.email} bracket>e-posta</TextLink></div></div><Window title="profil.json" meta="json" className={styles.profile}><JsonBlock entries={profile}/></Window></div><a href="#about" className={styles.scrollHint}><span aria-hidden="true">↓ </span>aşağı kaydır <span aria-hidden="true">↓</span></a></div></section>;
+}
