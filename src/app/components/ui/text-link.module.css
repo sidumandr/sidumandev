@@ -1,0 +1,7 @@
+.link { display:inline; font:500 12px/22px var(--font-mono),monospace; color:var(--ink-muted); overflow-wrap:anywhere; }
+.label { transition:background 150ms,color 150ms; }
+.link:hover { color:var(--ink); }
+.link:hover .label { background:linear-gradient(transparent 50%,var(--accent-wash) 50%); }
+.accent { color:var(--accent); }
+.accent .label { background:linear-gradient(transparent 58%,var(--accent-wash) 58%); }
+.accent:hover .label { background:var(--yellow); color:var(--on-yellow); }
