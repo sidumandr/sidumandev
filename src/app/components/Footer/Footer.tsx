@@ -1,21 +1,6 @@
-import { Code2, Heart } from "lucide-react";
+import { Prompt } from "../ui/Prompt";
+import { Icon } from "../ui/Icon";
 import styles from "./footer.module.css";
-
-const Footer = () => {
-  return (
-    <footer className={styles.footer}>
-      <div className={styles.container}>
-        <div className={styles.logo}>
-          <Code2 size={18} strokeWidth={2.5} />
-          <span>siduman</span>
-        </div>
-        <p className={styles.copy}>
-          © {new Date().getFullYear()} — Tasarlandı ve geliştirildi{" "}
-          <Heart size={13} className={styles.heart} /> ile.
-        </p>
-      </div>
-    </footer>
-  );
-};
-
-export default Footer;
+export default function Footer() {
+  return <footer className={styles.footer}><div className={"container "+styles.container}><a href="#hero" aria-label="Sayfa başına dön"><Prompt command="exit"/></a><p>© {new Date().getFullYear()} — Tasarlandı ve geliştirildi <Icon name="heart" size={12}/> ile.</p></div></footer>;
+}
