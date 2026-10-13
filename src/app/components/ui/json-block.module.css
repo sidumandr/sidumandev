@@ -1,0 +1,9 @@
+.block { font:400 12px/22px var(--font-mono),monospace; }
+.lines { padding-left:24px; margin-top:16px; color:var(--ink-faint); }
+.lines li { padding-left:8px; overflow-wrap:anywhere; }
+.lines li::marker { color:var(--ink-faint); font-size:11px; }
+.indent { display:block; padding-left:8px; }
+.key { color:var(--ink-muted); }
+.value { color:var(--accent); }
+.punctuation { color:var(--ink-faint); }
+.available { margin-left:8px; }
