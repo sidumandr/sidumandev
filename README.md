@@ -13,7 +13,7 @@ npm run dev
 
 ```sh
 npm run lint
-npx tsc --noEmit
+npm run typecheck
 npm run build
 ```
 
