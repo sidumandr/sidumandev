@@ -1,0 +1,6 @@
+.bar { position:fixed; bottom:0; inset-inline:0; z-index:50; height:30px; display:flex; align-items:center; background:var(--surface-raised); border-top:1px solid var(--line); font:500 11px/20px var(--font-mono),monospace; color:var(--ink-muted); }
+.mode { align-self:stretch; display:flex; align-items:center; padding-inline:12px; background:var(--yellow); color:var(--on-yellow); border:1px solid var(--yellow-edge); border-bottom:0; }
+.path { padding-inline:16px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.meta { margin-left:auto; padding-inline:16px; white-space:nowrap; }
+.position { background:var(--ink); color:var(--bg); padding-inline:12px; align-self:stretch; display:flex; align-items:center; margin-left:auto; }
+@media(max-width:720px) { .meta { display:none; } .path { padding-inline:10px; } }
