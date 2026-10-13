@@ -4,16 +4,6 @@ import Projects from "./components/Projects/Projects";
 import Certificates from "./components/Certificates/Certificates";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
-
 export default function Home() {
-  return (
-    <>
-      <Hero />
-      <About />
-      <Projects />
-      <Certificates />
-      <Contact />
-      <Footer />
-    </>
-  );
+  return <><Hero/><About/><Projects/><Certificates/><Contact/><Footer/></>;
 }
