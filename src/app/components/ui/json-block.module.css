@@ -7,3 +7,5 @@
 .value { color:var(--accent); }
 .punctuation { color:var(--ink-faint); }
 .available { margin-left:8px; }
+
+.arrayItem { display:block; padding-left:24px; }
