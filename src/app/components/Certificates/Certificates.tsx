@@ -19,7 +19,7 @@ export default function Certificates() {
             {certificates.map(cert => {
               const logoClass = styles.logo + ("square" in cert.logo && cert.logo.square ? " " + styles.squareLogo : "");
               return (
-                <tr key={cert.credentialUrl}>
+                <tr key={cert.credentialUrl} style={{ "--brand-rgb": cert.logo.brandRgb } as CSSProperties}>
                   <td className={styles.date}><time dateTime={cert.date}>{cert.date}</time></td>
                   <th scope="row"><span className={styles.certTitle}>{cert.title}</span><span className={styles.issuer}>{cert.issuer}</span></th>
                   <td className={styles.link}>
