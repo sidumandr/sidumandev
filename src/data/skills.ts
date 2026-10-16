@@ -10,6 +10,6 @@ export const skillGroups = [
   { title: "Veri erişimi ve önbellekleme", skills: ["Prisma ORM", "Redis"] },
   { title: "Mesaj kuyrukları ve görev işleme", skills: ["BullMQ"] },
   { title: "Yapay zekâ uygulamaları", skills: ["LangChain", "RAG"] },
-  { title: "AI Tools", skills: ["Claude Code", "Codex", "Qwen"] },
   { title: "Altyapı ve geliştirme", skills: ["Caddy", "Docker", "CI/CD", "Git"] },
+  { title: "AI Tools", skills: ["Claude Code", "Codex", "Qwen"] },
 ] as const satisfies readonly SkillGroupData[];
