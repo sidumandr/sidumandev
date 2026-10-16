@@ -1,6 +1,13 @@
 .history { position:absolute; top:40px; right:calc((100vw - min(1120px,100vw - 48px)) / 2); width:540px; color:var(--ink-faint); font:400 13px/28px var(--font-mono),monospace; opacity:.24; pointer-events:none; user-select:none; overflow:hidden; white-space:nowrap; }
 .caption { border-bottom:1px solid var(--line); margin-bottom:12px; padding-bottom:4px; }
-.row { display:flex; gap:24px; }
+.viewport { height:448px; overflow:hidden; mask-image:linear-gradient(transparent,#000 12%,#000 82%,transparent); }
+.stream { animation:terminalFlow 44s linear infinite; will-change:transform; }
+.row { display:flex; gap:24px; height:28px; }
 .row>span { opacity:.6; }
-@media(max-width:900px) { .history { right:24px; width:420px; opacity:.16; } }
-@media(max-width:720px) { .history { right:-130px; top:36px; width:390px; opacity:.15; font-size:11px; } }
+.embedded { inset:0; width:auto; opacity:.14; z-index:-1; }
+.embedded .viewport { height:100%; }
+.embedded .stream { animation-duration:38s; }
+@keyframes terminalFlow { from { transform:translateY(0); } to { transform:translateY(-50%); } }
+@media(max-width:900px) { .history:not(.embedded) { right:24px; width:420px; opacity:.16; } }
+@media(max-width:720px) { .history:not(.embedded) { right:-130px; top:36px; width:390px; opacity:.15; font-size:11px; } }
+@media(prefers-reduced-motion:reduce) { .stream { animation:none; will-change:auto; } }
