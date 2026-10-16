@@ -5,7 +5,8 @@
 .whoami :global(span[class*="command"]) { display:inline-block; white-space:nowrap; overflow:hidden; animation:type-command 650ms steps(6,end) both; }
 @keyframes type-command { from{max-width:0} to{max-width:6ch} }
 .name { font:600 88px/.95 var(--font-mono),monospace; letter-spacing:-.045em; margin-bottom:32px; }
-.cursor { display:inline-block; width:20px; height:.85em; margin-left:12px; border:1px solid var(--yellow-edge); background:var(--yellow); vertical-align:-.02em; animation:cursor-blink 1.1s step-end infinite; }
+.cursor { display:inline-block; width:20px; height:.85em; margin-left:12px; border:1px solid var(--yellow-edge); background:var(--yellow); vertical-align:-.02em; animation:hero-cursor-blink 1.1s step-end infinite; }
+@keyframes hero-cursor-blink { 0%,49% { opacity:1; } 50%,100% { opacity:0; } }
 .role { margin-bottom:28px; font:400 13px/22px var(--font-mono),monospace; }
 .role p { color:var(--ink-muted); margin-top:4px; }
 .role p>span { color:var(--accent); }
