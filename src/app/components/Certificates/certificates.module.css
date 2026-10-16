@@ -31,3 +31,10 @@
   .certTitle { font-size:15px; line-height:23px; }
   .issuer { font-size:13px; }
 }
+
+.table tbody tr { background:radial-gradient(ellipse at 78% 50%,rgb(var(--brand-rgb) / .34),transparent 66%); }
+.table tbody td,.table tbody th { padding-block:32px; }
+.brandPanel { border:0; background:transparent; padding-inline:12px 0; }
+:global([data-theme="light"]) .table tbody tr { background:radial-gradient(ellipse at 78% 50%,rgb(var(--brand-rgb) / .15),transparent 66%); }
+:global([data-theme="light"]) .brandPanel { background:transparent; }
+@media(max-width:720px) { .table tbody td,.table tbody th { padding-block:0; } .table tbody tr { background:radial-gradient(ellipse at 70% 80%,rgb(var(--brand-rgb) / .25),transparent 78%); } }
