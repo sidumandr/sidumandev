@@ -1,10 +1,10 @@
 import type { SkillGroupData } from "@/types/portfolio";
 export const skillGroups = [
-  { title: "Programlama dilleri", skills: ["TypeScript", "JavaScript", "Python", "C#"] },
-  { title: "Framework ve kütüphaneler", skills: ["React", "Next.js", "React Native"] },
-  { title: "Backend ve API", skills: ["NestJS", "Node.js", ".NET", "Django"] },
+  { title: "Diller", skills: ["TypeScript", "JavaScript", "Python", "C#"] },
+  { title: "Frontend", skills: ["React", "Next.js"] },
   { title: "UI ve stil", skills: ["Tailwind CSS", "shadcn/ui"] },
-  { title: "Masaüstü ve mobil", skills: ["Electron", "Expo"] },
+  { title: "Backend", skills: ["Node.js", "NestJS", "ASP.NET Core", "Django"] },
+  { title: "Mobil ve masaüstü", skills: ["React Native", "Expo", "Electron"] },
   { title: "Veritabanları", skills: ["PostgreSQL", "Microsoft SQL Server", "MongoDB"] },
   { title: "Sorgulama", skills: ["SQL", "NoSQL"] },
   { title: "Veri erişimi ve önbellekleme", skills: ["Prisma ORM", "Redis"] },
