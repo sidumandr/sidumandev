@@ -3,7 +3,7 @@ export const projects = [
   {
     title: "Sidufy",
     description:
-      "Dinamik ses yönetimi ve akıcı kullanıcı deneyimini merkeze alan, kişiselleştirilebilir bir müzik çalar uygulaması. Şarkı listeleri, çalma kontrolleri ve görselleştirilmiş ses dalgaları ile müziği dijital dünyayla buluşturur.",
+      "Şarkı listeleri, çalma kontrolleri ve ses dalgası görselleştirmeleri sunan bir müzik uygulaması. React ve TypeScript ile arayüz, Zustand ile istemci durumu ve Django ile backend katmanını bir araya getiriyor.",
     tags: ["React", "TypeScript", "Zustand", "Django", "Shadcn UI"],
     github: "https://github.com/sidumandr/Music-Streaming-Service",
     live: "https://sidufy.vercel.app/",
@@ -12,7 +12,7 @@ export const projects = [
   {
     title: "Cinapil",
     description:
-      "'Cinephile' tutkusunu modern API mimarisiyle buluşturan dinamik bir film rehberi. Gerçek zamanlı veri senkronizasyonu ve performans odaklı arayüzü ile sinema dünyasını parmaklarınızın ucuna getirir.",
+      "Film keşfini kolaylaştıran bir rehber uygulaması. Next.js ve TypeScript arayüzünü .NET API ve PostgreSQL veri katmanıyla birleştiriyor; Docker ile uygulamanın çalıştırma ortamını tanımlıyor.",
     tags: [
       "Next.js",
       "TypeScript",
@@ -29,7 +29,7 @@ export const projects = [
   {
     title: "Book Tracker App",
     description:
-      "Okuma yolculuğunuzu düzenleyen ve dijital kütüphanenizi oluşturmanıza olanak tanıyan bir takip platformu. Basit, hızlı ve kullanıcı deneyimi odaklı bir arayüzle kitap yönetimini kolaylaştırır.",
+      "Kişisel kitaplığını ve okuma sürecini takip etmek için geliştirilmiş bir uygulama. Next.js arayüzü, .NET backend ve PostgreSQL veritabanı ile kitap yönetimini uçtan uca ele alıyor.",
     tags: [
       "Next.js",
       "TypeScript",
@@ -46,7 +46,7 @@ export const projects = [
   {
     title: "SidusChat",
     description:
-      "WebSockets protokolü üzerinden düşük gecikmeli (low-latency) çift yönlü iletişim sağlayan, modern bir anlık mesajlaşma uygulaması. Kullanıcıların odalar oluşturabildiği, anlık bildirimler alabildiği ve kesintisiz veri akışının sağlandığı ölçeklenebilir bir iletişim mimarisi sunar.",
+      "Oda oluşturma ve anlık bildirim özellikleri sunan bir mesajlaşma uygulaması. Next.js arayüzü ile .NET backend arasında SignalR ve WebSocket üzerinden çift yönlü iletişim kuruyor; verileri PostgreSQL üzerinde tutuyor.",
     tags: [
       "Next.js",
       "TypeScript",
@@ -63,7 +63,7 @@ export const projects = [
   {
     title: "Mersin Arslan Nakliyat",
     description:
-      "Bir nakliyat firması için kurumsal web sitesini uçtan uca geliştirdim. Responsive UI, custom navigation (mobile menu, dropdown, outside click handling) ve kullanıcı etkileşimlerini React ile implemente ettim. SEO ve performans optimizasyonları ile projeyi production kalitesine ulaştırdım. Projenin yayına alınması ve repository yönetimi ekip arkadaşım tarafından gerçekleştirildi.",
+      "Bir nakliyat firması için Next.js ve TypeScript ile kurumsal web sitesi geliştirdim. Farklı ekranlara uyumlu arayüzü, mobil menüyü, açılır menüleri ve dışarı tıklama etkileşimlerini uyguladım; SEO ve performans iyileştirmeleri yaptım. Yayına alma ve depo yönetimini ekip arkadaşım üstlendi.",
     tags: ["Next.js", "TypeScript", "Bootstrap"],
     github:
       "https://github.com/sevketemingurbuz/mersin-arslan-nakliyat-1/tree/main",
