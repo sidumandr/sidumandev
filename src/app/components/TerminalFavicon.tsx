@@ -7,7 +7,7 @@ export function TerminalFavicon() {
     const icon = document.querySelector<HTMLLinkElement>('link[rel="icon"][href="/terminal-cursor.svg"]');
     if (!icon) return;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let interval: ReturnType<typeof window.setInterval> | undefined;
+    let interval: number | undefined;
     let isFilled = true;
     function reset() {
       if (interval !== undefined) window.clearInterval(interval);
