@@ -3,36 +3,24 @@ export const flagshipSections = [
     "id": "section-01",
     "number": "01",
     "label": "İş akışları",
-    "title": "Birbirine bağlı hukuki süreçler",
-    "description": "Tebligatın sonucu kesinleşmeyi, itiraz gönderim yetkisini, vefat veya cezaevi durumu ise sonraki işlemleri etkiliyor. Bu bağımlılıkları dosyanın mevcut durumuna göre ilerleyen bir süreç mimarisinde birleştiriyorum.",
+    "title": "Karmaşık süreçler için merkezi iş akışı motoru",
+    "description": "Birbirini etkileyen süreçleri; durum geçişleri, ön koşullar ve bekleme adımlarıyla modellenen bir uygulama mimarisinde birleştiriyorum.",
     "items": [
       {
-        "title": "Tebligat",
-        "description": "Tebligat akıbetinin, teslim bilgilerinin ve mazbataların kontrolü; bila dönüş nedenlerinin değerlendirilmesi; sonraki araştırma veya gönderim adımının belirlenmesi."
+        "title": "Durum ve bağımlılık yönetimi",
+        "description": "Bir süreçteki değişikliğin diğer görevleri durdurmasını, bekletmesini veya yeniden başlatmasını merkezi iş kurallarıyla yönetiyorum."
       },
       {
-        "title": "Tensip ve evrak kontrolü",
-        "description": "Tensip durumlarının ve dosyaya gelen evrakların kontrolünü operasyonel takiple ilişkilendirerek bekleyen kararların ve sonraki işlerin görünür hale getirilmesi."
+        "title": "Belge ve işlem durumu takibi",
+        "description": "Dosyaya gelen belgeleri, tensip durumlarını ve bekleyen işlemleri operasyon ekranlarıyla ilişkilendiriyor; sonraki adımın ekip tarafından takip edilmesini sağlıyorum."
       },
       {
-        "title": "Kesinleşme",
-        "description": "Tebliğ tarihi, süre başlangıcı, tatil takvimi ve itiraz durumuna bağlı hesaplamalar; kararın kaynak ve gerekçesiyle kaydedilmesi."
+        "title": "Takvim ve süre hesaplama",
+        "description": "Tarih, takvim istisnaları ve süreç durumlarını birlikte değerlendiren hesaplama bileşenleri geliştiriyor; hesaplamanın girdilerini ve dayanaklarını kaydediyorum."
       },
       {
-        "title": "İtiraz",
-        "description": "İtirazın tespiti ve türünün ayrıştırılması, ilgili işlemlerin durdurulması ve engel kalktığında sürecin uygun aşamadan devam etmesi."
-      },
-      {
-        "title": "Vefat ve mirasçılık",
-        "description": "Vefat tespiti, veraset yetki belgesi talebi, mirasçı bilgilerinin okunması ve tebligat adımlarının takibi."
-      },
-      {
-        "title": "Cezaevi",
-        "description": "Kurum bilgisinin çözümlenmesi, KEP tebligatı ve ilgili mühletlerin süreç üzerindeki etkilerinin yönetilmesi."
-      },
-      {
-        "title": "Haciz ve mal varlığı",
-        "description": "Haciz taleplerinin tespiti; SGK, araç, taşınmaz, banka, posta çeki ve icra dosyası sorgularının iş akışlarına bağlanması."
+        "title": "İstisna yönetimi",
+        "description": "Standart akışın dışında kalan durumları ayrı iş adımlarına dönüştürüyor; inceleme gerektiren kayıtları personelin iş havuzuna aktarıyorum."
       }
     ]
   },
@@ -40,33 +28,33 @@ export const flagshipSections = [
     "id": "section-02",
     "number": "02",
     "label": "Yapay zekâ",
-    "title": "Adres aramasından karar mekanizmasına",
-    "description": "Sonuçsuz kalan tebligatların ardından MERNİS, İSKİ, GİB, kurumsal portal ve GSM kayıtlarını kapsayan beş aşamalı bir adres araştırma akışı tasarladım.",
+    "title": "AI destekli karşılaştırma, insan kontrollü değerlendirme",
+    "description": "Farklı biçimlerde yazılmış kayıtların benzerliğini değerlendiren yapay zekâ destekli karşılaştırmayı, kural tabanlı kontroller ve insan incelemesiyle birleştiriyorum.",
     "items": [
       {
-        "title": "AI destekli karşılaştırma",
-        "description": "Farklı biçimlerde yazılmış adreslerin aynı fiziksel konuma ait olup olmadığını değerlendirmek için yapay zekâ destekli karşılaştırma kullanıyorum. Sistem bulunan adresleri geçmiş işlemlerle karşılaştırıyor; eksik veya gönderime uygun olmayan kayıtları eliyor."
+        "title": "Kayıt kalitesi ve karşılaştırma",
+        "description": "Adres karşılaştırma senaryolarında yazım farklılıklarını ve eksik alanları ele alıyor; karşılaştırma sonuçlarını geçmiş işlem kayıtlarıyla birlikte değerlendiriyorum."
       },
       {
-        "title": "Belirsizlikte insan onayı",
-        "description": "Sonucun belirsiz olduğu durumlarda karar operatöre aktarılıyor. Araştırma; geçmiş işlemleri, adres kalitesini ve hukuki koşulları birlikte değerlendiren bir karar sürecine dönüşüyor."
+        "title": "Belirsiz sonuçların yönetimi",
+        "description": "Belirsiz sonuçları otomatik olarak kesinleştirmek yerine operatör incelemesine aktaran bir akış geliştiriyorum. Model çıktısını uygulama içindeki kontrol adımlarından geçiriyorum."
       }
     ]
   },
   {
     "id": "section-03",
     "number": "03",
-    "label": "Gönderim & maliyet",
-    "title": "Geri alınamaz işlemler için kontrollü akış",
-    "description": "Ücret doğuran ve geri alınması mümkün olmayan tebligat gönderimlerini ayrı bir işlem modülünde yönetiyorum.",
+    "label": "İşlem güvenilirliği",
+    "title": "Tekrarlı işlemleri önleyen kontrollü yürütme",
+    "description": "Yan etkisi veya maliyeti olan işlemler için önizleme, ön koşul kontrolü ve onay adımlarını ayrı bir modülde birleştiriyorum.",
     "items": [
       {
-        "title": "Gönderim korumaları",
-        "description": "Önizleme, çift gönderim koruması, mazbata bekleme koşulları ve operatör onaylarını gönderim akışının parçası olarak tasarladım. Yarıda kalan veya sonucu belirsiz işlemlerde dosya kilitlenerek insan incelemesine aktarılıyor."
+        "title": "Çift işlem koruması",
+        "description": "Tekrarlı yürütmeyi önleyen kontroller ve işlem kilitleri kullanıyorum. Yarıda kalan veya sonucu belirsiz işlemleri yeniden çalıştırmadan önce incelemeye ayırıyorum."
       },
       {
-        "title": "Bütçe ve harcama takibi",
-        "description": "Ücretli sorgularda dosya bazında ücretsiz haklar, günlük bütçe sınırları ve her harcamanın kim tarafından, ne için ve ne zaman yapıldığı takip ediliyor."
+        "title": "Maliyet görünürlüğü",
+        "description": "İşlem bazında kullanım haklarını, günlük bütçe sınırlarını ve harcama kayıtlarını izleyerek operasyon maliyetlerinin takip edilmesini sağlıyorum."
       }
     ]
   },
@@ -74,16 +62,16 @@ export const flagshipSections = [
     "id": "section-04",
     "number": "04",
     "label": "Operasyon",
-    "title": "Otomasyon ile insan kararının buluştuğu yer",
-    "description": "Otomasyonun durduğu noktaları, insan kararı gerektiren durumları ve personelin tamamlaması gereken işleri ortak bir iş havuzunda topluyorum.",
+    "title": "Ekiplerin çalışabildiği bir operasyon arayüzü",
+    "description": "Arka plan süreçlerini, bekleyen kararları ve personel görevlerini ortak bir iş havuzunda görünür hale getiriyorum.",
     "items": [
       {
-        "title": "Personel iş havuzu",
-        "description": "İş türü, portföy, süreç adımı ve bekleme süresine göre filtreleme; görevlerin kimde beklediğini ve hangi işlemlerin geciktiğini görmeyi sağlıyor."
+        "title": "Görev ve gecikme takibi",
+        "description": "İş türü, proje, süreç adımı ve bekleme süresine göre filtreler geliştiriyorum. Görevlerin kimde beklediği ve hangi adımların geciktiği izlenebiliyor."
       },
       {
-        "title": "Dosyanın üç katmanlı özeti",
-        "description": "Dosya ekranında mevcut durum, sıradaki işlem ve geçmiş hareketlerin zaman çizelgesi birlikte sunuluyor. Personel ne olduğunu ve sonraki adımı tek ekranda görebiliyor."
+        "title": "Tek ekranda süreç bağlamı",
+        "description": "Mevcut durum, sıradaki iş ve geçmiş hareketlerin zaman çizelgesini aynı dosya ekranında sunarak personelin işlem bağlamını takip etmesini kolaylaştırıyorum."
       }
     ]
   },
@@ -91,16 +79,16 @@ export const flagshipSections = [
     "id": "section-05",
     "number": "05",
     "label": "Güvenlik & mimari",
-    "title": "Her kararın bir dayanağı var",
-    "description": "İş kurallarını merkezi ve sürümlenebilir yapıda tutuyorum. Kararların hangi veri, belge ve tarihe dayandığını kaydederek geçmiş işlemlerin açıklanabilmesini ve kurallar değiştiğinde yeniden değerlendirilebilmesini sağlıyorum.",
+    "title": "İzlenebilir işlemler, sınırlandırılmış erişim",
+    "description": "NestJS üzerinde modüler monolit mimarisiyle iş kurallarını merkezi ve sürümlenebilir bileşenlerde tutuyor; işlem sonuçlarının girdileriyle birlikte izlenmesini sağlıyorum.",
     "items": [
       {
-        "title": "Yetki kapsamı ve veri izolasyonu",
-        "description": "Çok portföylü yapıda her sorguyu kullanıcının yetki kapsamıyla sınırlandırıyorum. Kişisel verileri şifreli saklayıp arayüzde maskeliyorum."
+        "title": "Proje bazında veri izolasyonu",
+        "description": "Uygulama sorgularını kullanıcının proje kapsamıyla sınırlandırıyorum. Veri saklamada şifreleme, arayüzlerde maskeleme ve erişim kontrolü uyguluyorum."
       },
       {
-        "title": "Denetim izi ve geliştirme kontrolleri",
-        "description": "Hatalı işlem kayıtlarını silmek yerine iptal kaydıyla koruyan denetim izi ve commit, push ve CI aşamalarında kişisel veri sızıntısını kontrol eden kapılar kullanıyorum."
+        "title": "Denetim izi ve CI kontrolleri",
+        "description": "İşlem geçmişinde iptal ve düzeltme kayıtlarını koruyor; commit, push ve CI aşamalarında kişisel veri sızıntısını kontrol eden geliştirme kapıları kullanıyorum."
       }
     ]
   },
@@ -108,36 +96,36 @@ export const flagshipSections = [
     "id": "section-06",
     "number": "06",
     "label": "Ölçüm & test",
-    "title": "Önce ölç, sonra geliştir, tekrar doğrula",
-    "description": "İş kurallarını canlı veriden ölçüm, uygulama, mutasyon testi ve kaynak kayıtlarla karşılaştırma döngüsüyle geliştiriyorum.",
+    "title": "İş kurallarını ölçerek doğrulamak",
+    "description": "Değişiklikleri veri analizi, uygulama, otomatik test ve kaynak kayıtlarla karşılaştırma döngüsüyle geliştiriyorum.",
     "items": [
       {
-        "title": "1.123 dosyada doğrulanan düzeltme",
-        "description": "Bu yöntemle 1.123 dosyayı etkileyen bir günlük kesinleşme tarihi sapmasını tespit edip düzelttim; sonuçları UYAP kayıtlarıyla karşılaştırarak doğruladım."
+        "title": "Tarih hesaplamalarında geriye dönük doğrulama",
+        "description": "Bir günlük tarih sapmasının kök nedenlerini analiz ederek hesaplama mantığını düzelttim. Etkilenen kayıtları kaynak verilerle karşılaştırarak sonucu doğruladım."
       },
       {
         "title": "10.000+ otomatik test",
-        "description": "Otomatik testler ve mutasyon testleriyle yalnızca kodun çalışmasını değil, kritik iş kurallarındaki değişikliklerin testler tarafından yakalanmasını da kontrol ediyorum."
+        "description": "Otomatik testleri mutasyon testleriyle destekliyorum. Kritik bir kural bilerek değiştirildiğinde testin hatayı yakalayıp yakalamadığını kontrol ediyorum."
       }
     ]
   },
   {
     "id": "section-07",
     "number": "07",
-    "label": "Entegrasyon & altyapı",
-    "title": "Dış sistemin değişkenliğini yönetmek",
-    "description": "UYAP entegrasyonunu kullanıcı oturumu üzerinden Playwright tabanlı tarayıcı otomasyonuyla yürütüyorum.",
+    "label": "Altyapı & kuyruklar",
+    "title": "Arka plan işlerinden canlı ortam işletimine",
+    "description": "Redis ve BullMQ ile arka plan işlerini, eşzamanlılık kontrollerini ve süreç yürütmesini uygulama katmanından ayrı ele alıyorum.",
     "items": [
       {
-        "title": "Oturum ve eşzamanlılık yönetimi",
-        "description": "Kısa ömürlü oturum bilgileri, aynı kimlikle eşzamanlı işlem kısıtları ve değişen dış sistem davranışları için oturum ve kilit yönetimi geliştiriyorum."
+        "title": "Eşzamanlılık ve işlem kilitleri",
+        "description": "Aynı işlem bağlamındaki çakışmaları kilit yönetimiyle kontrol ediyor; oturum yaşam döngüsü ve değişen dış bağımlılıklar için hata durumlarını ele alıyorum."
       },
       {
-        "title": "Uçtan uca teknoloji ve işletim",
-        "description": "Redis ve BullMQ ile arka plan işlerini, Next.js ile operasyon arayüzünü; NestJS, Prisma ve PostgreSQL ile uygulama ve veri katmanlarını oluşturuyorum. Çok kopyalı dağıtım, systemd ve sürekli entegrasyon kontrolleriyle canlı ortamın işletimini yönetiyorum."
+        "title": "Uçtan uca geliştirme ve dağıtım",
+        "description": "Next.js ve TypeScript ile operasyon arayüzünü; NestJS, Prisma ve PostgreSQL ile API ve veri katmanlarını geliştiriyorum. Çok kopyalı dağıtım, systemd ve sürekli entegrasyon kontrolleriyle canlı ortamın işletimini yürütüyorum."
       }
     ]
   }
 ] as const;
 
-export const flagshipStack = ["NestJS", "Next.js", "TypeScript", "Prisma", "PostgreSQL", "Redis", "BullMQ", "Playwright", "systemd", "CI/CD"] as const;
+export const flagshipStack = ["NestJS", "Next.js", "TypeScript", "Prisma", "PostgreSQL", "Redis", "BullMQ", "systemd", "CI/CD"] as const;
