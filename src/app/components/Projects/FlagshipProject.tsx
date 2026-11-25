@@ -1,9 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { ArrowUpRight, BrainCircuit, ShieldCheck, Workflow, X } from "lucide-react";
 import type { FlagshipContent } from "@/lib/content/schema";
 import { ProductTour } from "../Showcase/ProductTour";
+import { Architecture } from "./Architecture";
 import { TagList } from "../ui/TagList";
 import styles from "./flagship.module.css";
 
@@ -13,19 +14,6 @@ const anchor = (index: number) => "flagship-section-" + number(index);
 
 export function FlagshipProject({ flagship }: { flagship: FlagshipContent }) {
   const [open, setOpen] = useState(false);
-  const [target, setTarget] = useState<string | null>(null);
-
-  // Bir yetenek kutucuğundan açıldıysa pencere o bölüme kaydırılır.
-  useEffect(() => {
-    if (!open || !target) return;
-    const frame = requestAnimationFrame(() => document.getElementById(target)?.scrollIntoView({ block: "start" }));
-    return () => cancelAnimationFrame(frame);
-  }, [open, target]);
-
-  function openAt(sectionAnchor: string | null) {
-    setTarget(sectionAnchor);
-    setOpen(true);
-  }
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -47,7 +35,7 @@ export function FlagshipProject({ flagship }: { flagship: FlagshipContent }) {
               })}
             </ul>
           )}
-          <button type="button" className={styles.trigger} onClick={() => openAt(null)} data-track="flagship_open" data-track-label="Detaylar">
+          <button type="button" className={styles.trigger} onClick={() => setOpen(true)} data-track="flagship_open" data-track-label="Detaylar">
             Detaylara bak <ArrowUpRight size={17} aria-hidden="true" />
           </button>
           </div>
@@ -55,19 +43,7 @@ export function FlagshipProject({ flagship }: { flagship: FlagshipContent }) {
 
         <ProductTour steps={flagship.tour} />
 
-        {flagship.sections.length > 0 && (
-          <ol className={styles.capabilities} aria-label="Projede üstlendiğim işler">
-            {flagship.sections.map((section, index) => (
-              <li key={section.label}>
-                <button type="button" className={styles.capability} onClick={() => openAt(anchor(index))} data-track="flagship_open" data-track-label={section.label}>
-                  <span className={styles.capabilityNumber}>{number(index)}</span>
-                  <strong>{section.label}</strong>
-                  <span className={styles.capabilityText}>{section.title}</span>
-                </button>
-              </li>
-            ))}
-          </ol>
-        )}
+        <Architecture title={flagship.architectureTitle} text={flagship.architectureText} stack={flagship.techStack} />
       </article>
 
       <Dialog.Portal>
@@ -88,7 +64,7 @@ export function FlagshipProject({ flagship }: { flagship: FlagshipContent }) {
                   {flagship.metrics.map(metric => <div key={metric.label}><dt>{metric.label}</dt><dd>{metric.value}</dd></div>)}
                 </dl>
               )}
-              <TagList items={flagship.stack} />
+              <TagList items={flagship.techStack.map(item => item.name)} />
             </div>
             <nav className={styles.sectionNav} aria-label="Bölümler">
               {flagship.sections.map((section, index) => <a key={section.label} href={"#" + anchor(index)}>{number(index)} {section.label}</a>)}

@@ -14,7 +14,7 @@ const columns = journey.map((_, index) => (WIDTH / journey.length) * (index + 0.
 
 function Envelope({ x, y, color }: { x: number; y: number; color: string }) {
   return (
-    <g transform={`translate(${x - 7} ${y})`} fill="#fff" stroke={color} strokeWidth="1.3">
+    <g transform={`translate(${x - 7} ${y})`} className={styles.nodeFill} stroke={color} strokeWidth="1.3">
       <rect width="14" height="10" rx="1.5" />
       <path d="M0.5 0.8 7 5.5 13.5 0.8" fill="none" />
     </g>
@@ -51,8 +51,8 @@ export function OverviewScreen() {
         <div>
           <div className={styles.ring}>
             <svg viewBox="0 0 220 220" width="220" height="220">
-              <circle cx="110" cy="110" r="92" fill="none" stroke="#e8ecf2" strokeWidth="12" />
-              <circle cx="110" cy="110" r="92" fill="none" stroke="#16213d" strokeWidth="12" strokeLinecap="round" strokeDasharray={circumference} strokeDashoffset={circumference * (1 - percent / 100)} />
+              <circle cx="110" cy="110" r="92" fill="none" className={styles.ringTrack} strokeWidth="12" />
+              <circle cx="110" cy="110" r="92" fill="none" className={styles.ringStroke} strokeWidth="12" strokeLinecap="round" strokeDasharray={circumference} strokeDashoffset={circumference * (1 - percent / 100)} />
             </svg>
             <div className={styles.ringValue}><strong>%{percent}</strong><span>kesinleşti</span></div>
           </div>
@@ -94,11 +94,11 @@ export function OverviewScreen() {
               <path className={styles.drop} d={`M ${columns[index]} 4 L ${columns[index]} 30 L ${columns[index] - 6} 40 L ${columns[index] - 6} ${PIPE_Y - 22} L ${columns[index]} ${PIPE_Y - 14}`} fill="none" stroke={stage.color} strokeWidth="1.5" />
               <path d={`M ${columns[index] + 5} 26 L ${columns[index] + 5} ${PIPE_Y - 16}`} fill="none" stroke={stage.color} strokeOpacity=".35" strokeWidth="1.2" />
               <Envelope x={columns[index] - 6} y={44 + (index % 3) * 22} color={stage.color} />
-              <circle cx={columns[index]} cy="4" r="5" fill="#fff" stroke={stage.color} strokeWidth="1.5" />
+              <circle cx={columns[index]} cy="4" r="5" className={styles.nodeFill} stroke={stage.color} strokeWidth="1.5" />
               {index < journey.length - 1 && (
                 <>
-                  <circle cx={columns[index]} cy={PIPE_Y} r="13" fill="#fff" stroke={stage.color} strokeOpacity=".3" strokeWidth="6" />
-                  <circle cx={columns[index]} cy={PIPE_Y} r="9" fill="#fff" stroke={stage.color} strokeWidth="2.2" />
+                  <circle cx={columns[index]} cy={PIPE_Y} r="13" className={styles.nodeFill} stroke={stage.color} strokeOpacity=".3" strokeWidth="6" />
+                  <circle cx={columns[index]} cy={PIPE_Y} r="9" className={styles.nodeFill} stroke={stage.color} strokeWidth="2.2" />
                   <circle cx={columns[index]} cy={PIPE_Y} r="3.5" fill={stage.color} />
                 </>
               )}
@@ -110,13 +110,13 @@ export function OverviewScreen() {
 
           {/* Haciz süreci: dosyalar işlere dağılır */}
           <g transform={`translate(${columns[6] - 36} ${PIPE_Y - 44})`}>
-            <rect width="72" height="88" rx="10" fill="#f3fbf6" stroke="#16a34a" strokeWidth="1.6" />
-            <circle cx="36" cy="44" r="12" fill="#fff" stroke="#16a34a" strokeWidth="2" />
+            <rect width="72" height="88" rx="10" className={styles.hacizFill} stroke="#16a34a" strokeWidth="1.6" />
+            <circle cx="36" cy="44" r="12" className={styles.nodeFill} stroke="#16a34a" strokeWidth="2" />
             <circle cx="36" cy="44" r="5" fill="#16a34a" />
             {[14, 30, 44, 58, 74].map(y => (
               <g key={y}>
                 <path className={styles.flow} d={`M 72 ${y} L 104 ${y}`} stroke="#16a34a" strokeWidth="1.3" />
-                <circle cx="108" cy={y} r="4" fill="#fff" stroke="#16a34a" strokeWidth="1.3" />
+                <circle cx="108" cy={y} r="4" className={styles.nodeFill} stroke="#16a34a" strokeWidth="1.3" />
               </g>
             ))}
           </g>

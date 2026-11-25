@@ -6,7 +6,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { poolCounts } from "./mock";
-import { formatNumber } from "./ScreenFrame";
+import { formatNumber, useScreen } from "./ScreenFrame";
 import styles from "./app.module.css";
 
 export type ShellNav = "overview" | "files" | "address" | "operations" | "monitoring" | `pool:${string}`;
@@ -66,6 +66,7 @@ export function AppShell({ active, children, updatedAt = "12.03.2026 14:20", pay
   paymentOrderOpen?: boolean;
 }) {
   const nav = useRef<HTMLElement>(null);
+  const { glass } = useScreen();
 
   // Gerçek uygulamadaki gibi menü, açık olan sayfanın maddesi görünecek şekilde kaydırılmış durur.
   useEffect(() => {
@@ -76,7 +77,7 @@ export function AppShell({ active, children, updatedAt = "12.03.2026 14:20", pay
   }, [active, paymentOrderOpen]);
 
   return (
-    <div className={styles.app}>
+    <div className={styles.app + (glass ? " " + styles.glass : "")}>
       <aside className={styles.sidebar}>
         <div className={styles.logo}><span className={styles.logoMark} />Operasyon</div>
         <nav ref={nav} className={styles.nav}>

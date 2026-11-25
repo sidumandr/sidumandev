@@ -53,7 +53,7 @@ export default function Navbar({ name }: { name: string }) {
     <nav className={styles.navbar + (scrolled || menuOpen ? " " + styles.scrolled : "")} aria-label="Ana menü">
       <div className={"container " + styles.container}>
         <a href="#hero" className={styles.brand} onClick={close}>
-          <span className={styles.mark} aria-hidden="true" />
+          <span className={styles.mark} aria-hidden="true">&gt;<i>_</i></span>
           <span>{name}</span>
         </a>
         <ul className={styles.links}>{links(styles.link)}</ul>

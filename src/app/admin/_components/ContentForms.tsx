@@ -170,7 +170,7 @@ export function FlagshipForm({ initialValue }: { initialValue: FlagshipContent }
   const payload = {
     ...value,
     pillars: cleanList(value.pillars),
-    stack: cleanList(value.stack),
+    techStack: value.techStack.map(item => ({ name: item.name.trim(), role: item.role.trim() })).filter(item => item.name || item.role),
     tour: value.tour.map(step => ({ ...step, points: cleanList(step.points) })),
   };
   return (
@@ -182,10 +182,7 @@ export function FlagshipForm({ initialValue }: { initialValue: FlagshipContent }
       <TextField label="Proje adı" value={value.title} onChange={set("title")} maxLength={120} />
       <TextField label="Özet" value={value.summary} onChange={set("summary")} multiline rows={3} maxLength={400} />
       <TextField label="Üstlendiğin sorumluluk" value={value.ownership} onChange={set("ownership")} multiline rows={4} maxLength={800} />
-      <div className={styles.grid2}>
-        <ListField label="Öne çıkan başlıklar" value={value.pillars} onChange={set("pillars")} hint="Kartta simgeyle gösterilir, en fazla 4." />
-        <ListField label="Teknolojiler" value={value.stack} onChange={set("stack")} />
-      </div>
+      <ListField label="Öne çıkan başlıklar" value={value.pillars} onChange={set("pillars")} hint="Kartta simgeyle gösterilir, en fazla 4." />
       <div className={styles.field}>
         <span className={styles.label}>Rakamlar</span>
         <Repeater
@@ -199,6 +196,26 @@ export function FlagshipForm({ initialValue }: { initialValue: FlagshipContent }
             <div className={styles.inline}>
               <TextField label="Değer" value={item.value} onChange={next => update({ ...item, value: next })} maxLength={16} placeholder="100.000+" />
               <TextField label="Açıklama" value={item.label} onChange={label => update({ ...item, label })} maxLength={60} />
+            </div>
+          )}
+        />
+      </div>
+      <div className={styles.field}>
+        <span className={styles.label}>Mimari ve teknolojiler</span>
+        <p className={styles.hint}>Turun altındaki mimari şeması ve teknoloji listesi. Şemanın kendisi sabittir; başlığı, metni ve listeyi buradan değiştirirsin.</p>
+        <TextField label="Başlık" value={value.architectureTitle} onChange={set("architectureTitle")} maxLength={120} />
+        <TextField label="Metin" value={value.architectureText} onChange={set("architectureText")} multiline rows={3} maxLength={500} hint={`${value.architectureText.length}/500`} />
+        <Repeater
+          items={value.techStack}
+          onChange={set("techStack")}
+          create={() => ({ name: "", role: "" })}
+          addLabel="Teknoloji ekle"
+          max={12}
+          itemLabel={(item, index) => `${index + 1}. ${item.name || "Yeni teknoloji"}`}
+          render={(item, update) => (
+            <div className={styles.inline}>
+              <TextField label="Ad" value={item.name} onChange={name => update({ ...item, name })} maxLength={30} placeholder="Redis" />
+              <TextField label="Projedeki görevi" value={item.role} onChange={role => update({ ...item, role })} maxLength={90} placeholder="Önbellek ve işlem kilitleri" />
             </div>
           )}
         />

@@ -43,6 +43,9 @@ export const seoSchema = z.object({
   description: text(200),
 });
 
+/** Ana projede kullanılan bir teknoloji ve projedeki görevi. */
+export const techItemSchema = z.object({ name: text(30), role: text(90) });
+
 export const flagshipItemSchema = z.object({ title: text(90), description: text(400) });
 export const flagshipSectionSchema = z.object({
   label: text(40),
@@ -70,7 +73,9 @@ export const flagshipSchema = z.object({
   ownership: text(800),
   pillars: z.array(text(40)).max(4),
   metrics: z.array(metricSchema).max(4),
-  stack: z.array(text(30)).max(16),
+  architectureTitle: text(120),
+  architectureText: text(500),
+  techStack: z.array(techItemSchema).max(12),
   sections: z.array(flagshipSectionSchema).max(10),
   tour: z.array(flagshipTourStepSchema).max(6),
 });
@@ -97,6 +102,7 @@ export type AboutContent = z.infer<typeof aboutSchema>;
 export type ContactContent = z.infer<typeof contactSchema>;
 export type SeoContent = z.infer<typeof seoSchema>;
 export type FlagshipContent = z.infer<typeof flagshipSchema>;
+export type TechItem = z.infer<typeof techItemSchema>;
 export type FlagshipSection = z.infer<typeof flagshipSectionSchema>;
 export type FlagshipTourStep = z.infer<typeof flagshipTourStepSchema>;
 export type AppearanceContent = z.infer<typeof appearanceSchema>;

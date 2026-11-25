@@ -64,7 +64,7 @@ export default function Hero({ hero, flagship, contact, appearance, images }: {
       <div className={"container " + styles.showcase + " enter"} style={order(5)}>
         {appearance.heroBackground === "horizon" && <HorizonArc />}
         <figure className={styles.shot}>
-          <ScreenFrame path="operasyon-paneli / genel-bakış" label="Ana projenin genel bakış ekranı: toplam dosya sayısı, kesinleşme oranı ve dosyaların aşamalar boyunca ilerleyişi. Veriler örnektir." height={860}>
+          <ScreenFrame path="operasyon-paneli / genel-bakış" label="Ana projenin genel bakış ekranı: toplam dosya sayısı, kesinleşme oranı ve dosyaların aşamalar boyunca ilerleyişi. Veriler örnektir." height={860} glass>
             <OverviewScreen />
           </ScreenFrame>
           <figcaption className={styles.caption}><MockDataNote /></figcaption>

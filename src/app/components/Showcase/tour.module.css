@@ -1,33 +1,41 @@
-.tour { margin-top:clamp(28px,4vw,44px); }
-.tabs { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(0,1fr); gap:8px; }
-.tab { position:relative; display:flex; flex-direction:column; align-items:flex-start; gap:6px; padding:14px 16px 18px; border:1px solid var(--line); border-radius:var(--radius-md); background:rgb(255 255 255 / .02); color:var(--ink-muted); text-align:left; transition:border-color 200ms,background 200ms,color 200ms; }
-.tab:hover { color:var(--ink); border-color:var(--line-strong); }
-.tabActive { color:var(--ink); border-color:rgb(var(--accent-rgb) / .4); background:var(--accent-soft); }
-.tabNumber { color:var(--accent); font:500 13px/1 var(--font-mono),monospace; }
-.tabTitle { font-size:14.5px; font-weight:500; line-height:1.35; }
-.tabProgress { position:absolute; left:16px; right:16px; bottom:8px; height:2px; border-radius:2px; background:rgb(255 255 255 / .06); overflow:hidden; }
-.tabProgress i { display:block; width:0; height:100%; background:var(--accent); animation:progress linear forwards; }
-@keyframes progress { to { width:100%; } }
+.tour { margin-top:clamp(28px,4vw,48px); }
 
-.stage { display:grid; grid-template-columns:minmax(0,.52fr) minmax(0,1.48fr); gap:clamp(20px,3vw,36px); align-items:start; margin-top:20px; }
-.copy { display:flex; flex-direction:column; gap:14px; padding-top:8px; animation:copyIn .5s var(--ease-out) both; }
+/* Adım göstergesi: numaralı rozetler ve aralarında dolan çizgi */
+.stepper { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(0,1fr); gap:0; }
+.stepItem { position:relative; padding-right:14px; }
+.stepButton { display:flex; flex-direction:column; align-items:flex-start; gap:12px; width:100%; padding:0; text-align:left; color:var(--ink-faint); transition:color 250ms; }
+.stepButton:hover { color:var(--ink); }
+.badge { position:relative; z-index:1; display:grid; place-items:center; width:44px; height:44px; border:1px solid var(--line-strong); border-radius:12px; background:var(--bg-elevated); font:600 14px/1 var(--font-mono),monospace; transition:background 300ms,border-color 300ms,color 300ms,box-shadow 300ms; }
+.stepTitle { max-width:92%; font-size:14.5px; font-weight:500; line-height:1.4; }
+.connector { position:absolute; top:21px; left:56px; right:14px; height:2px; border-radius:2px; background:var(--line-strong); overflow:hidden; }
+.connector i { display:block; height:100%; background:var(--accent); transition:width 500ms var(--ease-out); }
+.connector .filling { width:0; animation:fill linear forwards; }
+@keyframes fill { to { width:100%; } }
+.done .badge { border-color:rgb(var(--accent-rgb) / .5); color:var(--accent); background:var(--accent-soft); }
+.done .stepButton { color:var(--ink-muted); }
+.current .badge { border-color:var(--accent); background:var(--accent); color:var(--on-yellow); box-shadow:0 0 0 6px rgb(var(--accent-rgb) / .14),0 10px 30px -8px rgb(var(--accent-rgb) / .6); }
+.current .stepButton { color:var(--ink); }
+
+/* Metin ve ekran */
+.stage { display:grid; grid-template-columns:minmax(0,.5fr) minmax(0,1.5fr); gap:clamp(20px,3vw,40px); align-items:start; margin-top:28px; }
+.copy { display:flex; flex-direction:column; gap:14px; padding-top:6px; animation:copyIn .5s var(--ease-out) both; }
 @keyframes copyIn { from { opacity:0; transform:translateY(8px); } }
+.kicker { color:var(--accent); font:500 13px/1 var(--font-mono),monospace; }
 .copy h4 { font-size:clamp(22px,2.4vw,28px); letter-spacing:-.03em; line-height:1.15; }
 .copy p { color:var(--ink-muted); font-size:16px; line-height:1.65; }
-.copy ul { display:flex; flex-direction:column; gap:10px; margin-top:4px; }
-.copy li { display:flex; gap:10px; font-size:15px; line-height:1.5; }
+.copy ul { display:flex; flex-direction:column; gap:8px; margin-top:4px; }
+.copy li { display:flex; gap:10px; padding:8px 10px; margin-inline:-10px; border-radius:10px; font-size:15px; line-height:1.5; color:var(--ink-muted); transition:background 300ms,color 300ms; }
 .copy li svg { flex-shrink:0; margin-top:3px; color:var(--accent); }
+.copy .pointActive { background:var(--accent-soft); color:var(--ink); }
 .copy .note { margin-top:6px; }
 
 .screens { display:grid; }
 .screen { grid-area:1 / 1; opacity:0; visibility:hidden; transform:translateY(12px) scale(.985); transition:opacity 450ms var(--ease-out),transform 600ms var(--ease-out),visibility 0s 450ms; }
 .screenActive { opacity:1; visibility:visible; transform:none; transition:opacity 450ms var(--ease-out),transform 600ms var(--ease-out),visibility 0s; }
 
-@media(max-width:960px) {
-  .stage { grid-template-columns:minmax(0,1fr); }
-  .tabs { grid-auto-flow:row; grid-template-columns:repeat(2,minmax(0,1fr)); }
-}
-@media(max-width:520px) {
-  .tab { padding:12px 12px 16px; }
-  .tabTitle { font-size:13.5px; }
+@media(max-width:960px) { .stage { grid-template-columns:minmax(0,1fr); } .screens { order:-1; } }
+@media(max-width:600px) {
+  .stepTitle { display:none; }
+  .badge { width:38px; height:38px; }
+  .connector { top:18px; left:48px; }
 }

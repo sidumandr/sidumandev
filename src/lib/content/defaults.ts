@@ -63,7 +63,19 @@ export const defaultContent: SiteContent = {
       { value: "150+", label: "personel için tasarlandı" },
       { value: "10.000+", label: "otomatik test" },
     ],
-    stack: ["NestJS", "Next.js", "TypeScript", "Prisma", "PostgreSQL", "Redis", "BullMQ", "systemd", "CI/CD"],
+    architectureTitle: "Arayüzden arka plan işlerine kadar TypeScript",
+    architectureText:
+      "Arayüz Next.js, API NestJS ile yazıldı. İş kuralları API içinde modüllere ayrılmış tek bir kod tabanında duruyor. Uzun süren ya da dış sistemlere giden işler Redis üzerindeki BullMQ kuyruklarında çalışıyor, kalıcı veri PostgreSQL'de tutuluyor.",
+    techStack: [
+      { name: "Next.js", role: "Operasyon paneli ve raporlama ekranları" },
+      { name: "TypeScript", role: "Arayüzden API'ye kadar tek dil" },
+      { name: "NestJS", role: "Modüler monolit API ve iş kuralları" },
+      { name: "PostgreSQL", role: "Dosyalar, süreç geçmişi ve kayıtlar" },
+      { name: "Prisma", role: "Şema, migration ve tip güvenli sorgular" },
+      { name: "Redis", role: "Önbellek ve işlem kilitleri" },
+      { name: "BullMQ", role: "Zamanlanmış, yeniden denenen arka plan işleri" },
+      { name: "Docker", role: "Servislerin paketlenmesi ve çalıştırılması" },
+    ],
     tour: [
       {
         screen: "pools",
