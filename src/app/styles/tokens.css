@@ -1,19 +1,24 @@
+/*
+ * Koyu "ürün lansmanı" teması. Değişken adları sertifikalar bölümünün de kullandığı
+ * adlarla aynı tutuldu (--line, --ink-*, --font-mono); o bölüm bu değerleri miras alır.
+ */
 :root {
-  --bg:#0a0c0a; --surface:#101310; --surface-raised:#171b17;
-  --line:#242a24; --line-control:#5d675d;
-  --ink:#e7ece5; --ink-muted:#9ea89c; --ink-faint:#7d877b;
-  --yellow:#ffe14d; --on-yellow:#0a0c0a; --yellow-edge:#ffe14d;
-  --accent:#ffe14d; --accent-wash:#3a330f; --accent-soft:#26220a; --danger:#ff8a75;
-  --container:1120px; --gutter:24px; --nav-height:64px;
-  --radius-sm:2px; --radius-md:4px;
+  --bg:#08090a; --bg-elevated:#0c0d0f;
+  --surface:#111214; --surface-raised:#16171a; --surface-hover:#1b1c20;
+  --line:rgb(255 255 255 / .08); --line-strong:rgb(255 255 255 / .13); --line-control:rgb(255 255 255 / .2);
+  --ink:#f4f4f5; --ink-muted:#a1a1aa; --ink-faint:#85858f;
+  /* Vurgu rengi admin panelindeki Görünüm sayfasından değiştirilebilir; site düzeni :root üzerinde --accent-rgb ve --accent-hover'ı ezer. */
+  --accent-rgb:255 225 77; --accent-hover:#fff06b;
+  --yellow:rgb(var(--accent-rgb)); --on-yellow:#0a0a0a; --yellow-edge:var(--yellow);
+  --accent:var(--yellow); --accent-wash:rgb(var(--accent-rgb) / .14); --accent-soft:rgb(var(--accent-rgb) / .07);
+  --success:#4ade80; --success-wash:rgb(74 222 128 / .12); --danger:#ff8a75; --danger-wash:rgb(255 138 117 / .12);
+  --glow:rgb(var(--accent-rgb) / .18);
+  --container:1180px; --gutter:24px; --nav-height:68px;
+  --radius-sm:8px; --radius-md:12px; --radius-lg:20px; --radius-xl:28px; --radius-pill:999px;
   --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:20px;
   --space-6:24px; --space-8:32px; --space-12:48px; --space-16:64px; --space-24:96px;
+  --card-bg:linear-gradient(180deg,rgb(255 255 255 / .045),rgb(255 255 255 / .015));
+  --card-shadow:inset 0 1px 0 rgb(255 255 255 / .05),0 30px 60px -30px rgb(0 0 0 / .7);
+  --ease-out:cubic-bezier(.16,1,.3,1);
   color-scheme:dark;
-}
-[data-theme="light"] {
-  --bg:#f1f0e9; --surface:#f9f8f3; --surface-raised:#e8e7de;
-  --line:#d8d6cb; --line-control:#84887e;
-  --ink:#0e110e; --ink-muted:#50574f; --ink-faint:#5e655c;
-  --yellow-edge:#0e110e; --accent:#0e110e; --accent-wash:#ffe14d; --accent-soft:#fff1a6; --danger:#b3261e;
-  color-scheme:light;
 }

@@ -1,57 +1,118 @@
 "use client";
-
+import { useEffect, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { ArrowUpRight, ArrowRight, X, Workflow, ShieldCheck, BrainCircuit } from "lucide-react";
-import { flagshipSections, flagshipStack } from "@/data/flagship";
+import { ArrowUpRight, BrainCircuit, ShieldCheck, Workflow, X } from "lucide-react";
+import type { FlagshipContent } from "@/lib/content/schema";
+import { ProductTour } from "../Showcase/ProductTour";
 import { TagList } from "../ui/TagList";
 import styles from "./flagship.module.css";
 
-const title = "Kurumsal İş Akışı ve Operasyon Platformu";
-const summary = "100.000+ kayıt ve 150+ personel ölçeği için tasarladığım; karmaşık iş akışlarını, AI destekli karşılaştırmayı ve ekip operasyonlarını tek platformda birleştiren kurumsal yazılım.";
+const pillarIcons = [Workflow, BrainCircuit, ShieldCheck];
+const number = (index: number) => String(index + 1).padStart(2, "0");
+const anchor = (index: number) => "flagship-section-" + number(index);
 
-export function FlagshipProject() {
+export function FlagshipProject({ flagship }: { flagship: FlagshipContent }) {
+  const [open, setOpen] = useState(false);
+  const [target, setTarget] = useState<string | null>(null);
+
+  // Bir yetenek kutucuğundan açıldıysa pencere o bölüme kaydırılır.
+  useEffect(() => {
+    if (!open || !target) return;
+    const frame = requestAnimationFrame(() => document.getElementById(target)?.scrollIntoView({ block: "start" }));
+    return () => cancelAnimationFrame(frame);
+  }, [open, target]);
+
+  function openAt(sectionAnchor: string | null) {
+    setTarget(sectionAnchor);
+    setOpen(true);
+  }
+
   return (
-    <Dialog.Root>
-      <article className={styles.feature}>
-        <div className={styles.topline}><span className={styles.eyebrow}>01 / ANA PROJE</span><span className={styles.product}>Teknik liderlik · Uçtan uca geliştirme</span></div>
-        <div className={styles.featureGrid}>
-          <div>
-            <h3 className={styles.featureTitle}>{title}</h3>
-            <p className={styles.summary}>{summary}</p>
-            <div className={styles.pillars}><span><Workflow size={15}/> Süreç otomasyonu</span><span><BrainCircuit size={15}/> AI entegrasyonu</span><span><ShieldCheck size={15}/> Denetlenebilir mimari</span></div>
-            <Dialog.Trigger className={styles.trigger}>Projenin detaylarını keşfet <ArrowUpRight size={19}/></Dialog.Trigger>
+    <Dialog.Root open={open} onOpenChange={setOpen}>
+      <article className={styles.feature + " reveal"}>
+        <div className={styles.glow} aria-hidden="true" />
+        <div className={styles.head}>
+          <div className={styles.headText}>
+            <p className={styles.eyebrow}>{flagship.eyebrow}</p>
+            <h3 className={styles.title}>{flagship.title}</h3>
+            <p className={styles.summary}>{flagship.summary}</p>
           </div>
-          <div className={styles.system} aria-label="Sistem akışı özeti">
-            <div className={styles.systemHeader}><span aria-hidden="true">●</span> süreç motoru</div>
-            <div className={styles.flow}><span>Veri & belgeler</span><ArrowRight size={16}/><span>İş kuralları</span></div>
-            <div className={styles.flow}><span>AI / karşılaştırma</span><ArrowRight size={16}/><span>Kontrol & onay</span></div>
-            <div className={styles.flow}><span>İş havuzu</span><ArrowRight size={16}/><span>Kontrollü işlem</span></div>
-            <p className={styles.systemFooter}>İzlenebilir süreçler. Ölçülebilir iş kuralları.</p>
+          <div className={styles.headSide}>
+          <p className={styles.role}><span>Rolüm:</span> {flagship.role}</p>
+          {flagship.pillars.length > 0 && (
+            <ul className={styles.pillars}>
+              {flagship.pillars.map((pillar, index) => {
+                const Icon = pillarIcons[index % pillarIcons.length];
+                return <li key={pillar}><Icon size={15} aria-hidden="true" />{pillar}</li>;
+              })}
+            </ul>
+          )}
+          <button type="button" className={styles.trigger} onClick={() => openAt(null)} data-track="flagship_open" data-track-label="Detaylar">
+            Detaylara bak <ArrowUpRight size={17} aria-hidden="true" />
+          </button>
           </div>
         </div>
-        <div className={styles.metrics}><div><strong>100.000+</strong><span>kayıt için tasarlanan ölçek</span></div><div><strong>150+</strong><span>personel için tasarlanan yapı</span></div><div><strong>10.000+</strong><span>otomatik test</span></div></div>
+
+        <ProductTour steps={flagship.tour} />
+
+        {flagship.sections.length > 0 && (
+          <ol className={styles.capabilities} aria-label="Projede üstlendiğim işler">
+            {flagship.sections.map((section, index) => (
+              <li key={section.label}>
+                <button type="button" className={styles.capability} onClick={() => openAt(anchor(index))} data-track="flagship_open" data-track-label={section.label}>
+                  <span className={styles.capabilityNumber}>{number(index)}</span>
+                  <strong>{section.label}</strong>
+                  <span className={styles.capabilityText}>{section.title}</span>
+                </button>
+              </li>
+            ))}
+          </ol>
+        )}
       </article>
+
       <Dialog.Portal>
-        <Dialog.Overlay className={styles.overlay}/>
+        <Dialog.Overlay className={styles.overlay} />
         <Dialog.Content className={styles.dialog}>
-          <header className={styles.dialogBar}><span>~/projeler/operasyon-platformu</span><Dialog.Close className={styles.close} aria-label="Proje detaylarını kapat"><X size={20}/></Dialog.Close></header>
+          <header className={styles.dialogBar}>
+            <span>{flagship.eyebrow}</span>
+            <Dialog.Close className={styles.close} aria-label="Detayları kapat"><X size={18} /></Dialog.Close>
+          </header>
           <div className={styles.scroll}>
             <div className={styles.intro}>
-              <p className={styles.eyebrow}>ANA PROJE / TEKNİK İNCELEME</p>
-              <Dialog.Title className={styles.dialogTitle}>{title}</Dialog.Title>
-              <Dialog.Description className={styles.summary}>{summary}</Dialog.Description>
-              <p className={styles.ownership}>Projenin teknik tasarımını ve uçtan uca geliştirmesini üstleniyorum. Operasyonel ihtiyaçları analiz ederek iş kurallarını yazılım modellerine dönüştürüyor; backend, kullanıcı arayüzü, veri katmanı ve canlı ortam altyapısını geliştiriyorum.</p>
-              <TagList items={flagshipStack} variant="soft"/>
+              <p className={styles.eyebrow}>Rolüm: {flagship.role}</p>
+              <Dialog.Title className={styles.dialogTitle}>{flagship.title}</Dialog.Title>
+              <Dialog.Description className={styles.summary}>{flagship.summary}</Dialog.Description>
+              <p className={styles.ownership}>{flagship.ownership}</p>
+              {flagship.metrics.length > 0 && (
+                <dl className={styles.metrics}>
+                  {flagship.metrics.map(metric => <div key={metric.label}><dt>{metric.label}</dt><dd>{metric.value}</dd></div>)}
+                </dl>
+              )}
+              <TagList items={flagship.stack} />
             </div>
-            <nav className={styles.sectionNav} aria-label="Proje detay başlıkları">{flagshipSections.map(section => <a key={section.id} href={"#flagship-"+section.id}>{section.number} {section.label}</a>)}</nav>
-            <div className={styles.sections}>
-              {flagshipSections.map(section => <section key={section.id} id={"flagship-"+section.id} className={styles.detailSection} aria-labelledby={"flagship-title-"+section.id}>
-                <div className={styles.sectionHeading}><span className={styles.number}>{section.number}</span><div><p className={styles.label}>{section.label}</p><h3 id={"flagship-title-"+section.id}>{section.title}</h3></div></div>
+            <nav className={styles.sectionNav} aria-label="Bölümler">
+              {flagship.sections.map((section, index) => <a key={section.label} href={"#" + anchor(index)}>{number(index)} {section.label}</a>)}
+            </nav>
+            {flagship.sections.map((section, index) => (
+              <section key={section.label} id={anchor(index)} className={styles.detailSection} aria-labelledby={anchor(index) + "-title"}>
+                <div className={styles.sectionHeading}>
+                  <span className={styles.sectionNumber}>{number(index)}</span>
+                  <div>
+                    <p className={styles.sectionLabel}>{section.label}</p>
+                    <h3 id={anchor(index) + "-title"}>{section.title}</h3>
+                  </div>
+                </div>
                 <p className={styles.sectionDescription}>{section.description}</p>
-                <div className={styles.items}>{section.items.map(item => <div key={item.title} className={styles.item}><h4>{item.title}</h4><p>{item.description}</p></div>)}</div>
-              </section>)}
-            </div>
-            <footer className={styles.dialogFooter}><span>Analiz → Mimari → Geliştirme → Canlı ortam</span><Dialog.Close className={styles.footerClose}>İncelemeyi kapat <X size={14}/></Dialog.Close></footer>
+                {section.items.length > 0 && (
+                  <div className={styles.items}>
+                    {section.items.map(item => <div key={item.title} className={styles.item}><h4>{item.title}</h4><p>{item.description}</p></div>)}
+                  </div>
+                )}
+              </section>
+            ))}
+            <footer className={styles.dialogFooter}>
+              <Dialog.Close className={styles.footerClose}>Kapat <X size={14} /></Dialog.Close>
+            </footer>
           </div>
         </Dialog.Content>
       </Dialog.Portal>

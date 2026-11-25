@@ -1,9 +1,48 @@
-import type { Project } from "@/types/portfolio";
-import { projectSlug,twoDigits } from "@/lib/format";
-import { Badge } from "../ui/Badge";
+import type { CSSProperties } from "react";
+import Image from "next/image";
+import type { ProjectView } from "@/lib/content/schema";
 import { TagList } from "../ui/TagList";
 import { TextLink } from "../ui/TextLink";
 import styles from "./projects.module.css";
-export function ProjectCard({project,index}:{project:Project;index:number}) {
-  return <article className={styles.card}><div className={styles.pathRow}><span className={styles.path}><span>{twoDigits(index)}</span> ~/projeler/{projectSlug(project.title)}/</span>{project.featured&&<Badge>popüler</Badge>}</div><h3 className={styles.title}>{project.title}</h3><p className={styles.description}>{project.description}</p><div className={styles.bottom}><TagList items={project.tags} variant="soft"/><div className={styles.links}><TextLink href={project.github} external bracket>kaynak</TextLink>{project.live&&<TextLink href={project.live} external bracket accent>canlı</TextLink>}</div></div></article>;
+
+/** Her projeye başlığından türeyen sabit bir renk tonu; kartlar birbirinden ayrışır. */
+function hueOf(text: string) {
+  let hash = 0;
+  for (const char of text) hash = (hash * 31 + char.charCodeAt(0)) % 360;
+  return hash;
+}
+
+export function ProjectCard({ project }: { project: ProjectView }) {
+  const tint = { "--hue": hueOf(project.title) } as CSSProperties;
+  return (
+    <article className={styles.card + " reveal"} style={tint}>
+      <div className={styles.media}>
+        <div className={styles.screen}>
+          {project.imageUrl ? (
+            <Image src={project.imageUrl} alt={project.title + " arayüzünden ekran görüntüsü"} fill sizes="(max-width: 760px) 92vw, 540px" className={styles.image} />
+          ) : (
+            <div className={styles.cover} aria-hidden="true">
+              <span className={styles.coverTitle}>{project.title}</span>
+              <span className={styles.coverTags}>{project.tags.slice(0, 3).join(", ")}</span>
+            </div>
+          )}
+        </div>
+      </div>
+      <div className={styles.body}>
+        <div className={styles.meta}>
+          {project.year && <span>{project.year}</span>}
+          {project.featured && <span className={styles.featured}>Öne çıkan</span>}
+        </div>
+        <h3 className={styles.title}>{project.title}</h3>
+        <p className={styles.summary}>{project.summary}</p>
+        <TagList items={project.tags.slice(0, 4)} />
+        {(project.liveUrl || project.githubUrl) && (
+          <div className={styles.links}>
+            {project.liveUrl && <TextLink href={project.liveUrl} external accent track="project_live" trackLabel={project.title}>Canlı site</TextLink>}
+            {project.githubUrl && <TextLink href={project.githubUrl} external track="project_source" trackLabel={project.title}>Kaynak kod</TextLink>}
+          </div>
+        )}
+      </div>
+    </article>
+  );
 }

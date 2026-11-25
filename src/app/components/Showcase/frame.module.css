@@ -1,0 +1,7 @@
+.frame { position:relative; overflow:hidden; border:1px solid var(--line-strong); border-radius:var(--radius-lg); background:#0c0d0f; box-shadow:0 0 0 6px rgb(255 255 255 / .02),0 50px 120px -40px rgb(0 0 0 / .9),inset 0 1px 0 rgb(255 255 255 / .06); }
+.chrome { display:flex; align-items:center; gap:7px; height:38px; padding:0 16px; border-bottom:1px solid var(--line); background:#121316; }
+.chrome>span { width:10px; height:10px; border-radius:50%; background:rgb(255 255 255 / .12); }
+.address { margin-inline:auto; padding:3px 14px; border-radius:var(--radius-pill); background:rgb(255 255 255 / .05); color:var(--ink-faint); font:400 12px/18px var(--font-mono),monospace; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:60%; }
+.viewport { position:relative; width:100%; overflow:hidden; background:#f5f6f8; }
+.canvas { position:absolute; left:0; top:0; transform-origin:0 0; transition:opacity 300ms; }
+@media(max-width:640px) { .chrome { height:30px; } .chrome>span { width:8px; height:8px; } .address { font-size:10.5px; } }

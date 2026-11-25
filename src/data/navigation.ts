@@ -1,7 +1,7 @@
 import type { NavigationItem } from "@/types/portfolio";
 export const navigation = [
-  { id: "about", label: "hakkımda", command: "hakkimda" },
-  { id: "projects", label: "projeler", command: "projeler" },
-  { id: "certificates", label: "sertifikalar", command: "sertifikalar" },
-  { id: "contact", label: "iletişim", command: "iletisim" },
+  { id: "projects", label: "Projeler" },
+  { id: "about", label: "Hakkımda" },
+  { id: "certificates", label: "Sertifikalar" },
+  { id: "contact", label: "İletişim" },
 ] as const satisfies readonly NavigationItem[];

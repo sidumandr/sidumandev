@@ -1,7 +1,8 @@
-.link { display:inline; font:500 12px/22px var(--font-mono),monospace; color:var(--ink-muted); overflow-wrap:anywhere; }
-.label { transition:background 150ms,color 150ms; }
+.link { display:inline-flex; align-items:center; gap:4px; font:500 14px/22px var(--font-sans),sans-serif; color:var(--ink-muted); transition:color 160ms; }
+.label { background:linear-gradient(currentColor,currentColor) 0 100% / 0 1px no-repeat; transition:background-size 260ms var(--ease-out); }
+.arrow { font-size:.9em; transition:transform 200ms var(--ease-out); }
 .link:hover { color:var(--ink); }
-.link:hover .label { background:linear-gradient(transparent 50%,var(--accent-wash) 50%); }
+.link:hover .label { background-size:100% 1px; }
+.link:hover .arrow { transform:translate(2px,-2px); }
 .accent { color:var(--accent); }
-.accent .label { background:linear-gradient(transparent 58%,var(--accent-wash) 58%); }
-.accent:hover .label { background:var(--yellow); color:var(--on-yellow); }
+.accent:hover { color:var(--accent-hover); }

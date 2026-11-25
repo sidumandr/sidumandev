@@ -1,31 +1,81 @@
 "use client";
-import { useEffect,useRef,useState } from "react";
-import { identity } from "@/data/identity";
+import { useEffect, useRef, useState } from "react";
+import { Menu, X } from "lucide-react";
 import { navigation } from "@/data/navigation";
 import { useActiveSection } from "@/hooks/useActiveSection";
-import type { Theme } from "@/types/portfolio";
 import { Button } from "../ui/Button";
-import { Icon } from "../ui/Icon";
-import { Prompt } from "../ui/Prompt";
 import styles from "./navbar.module.css";
-const cvRequestHref = "mailto:" + identity.email
-  + "?subject=" + encodeURIComponent("CV talebi · Safa İlhan Duman")
-  + "&body=" + encodeURIComponent("Merhaba Safa,\n\nCV'ni benimle paylaşabilir misin?\n\nAd Soyad:\nŞirket / Pozisyon:\n\nTeşekkürler.");
-interface NavbarProps {theme:Theme;toggleTheme:()=>void;}
-export default function Navbar({theme,toggleTheme}:NavbarProps) {
-  const [menuOpen,setMenuOpen]=useState(false);
-  const active=useActiveSection();
-  const menuRef=useRef<HTMLDivElement>(null);
-  const triggerRef=useRef<HTMLButtonElement>(null);
-  useEffect(()=>{
-    if(!menuOpen)return;
+
+export default function Navbar({ name }: { name: string }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const active = useActiveSection();
+  const menuRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY > 8);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
     menuRef.current?.querySelector<HTMLAnchorElement>("a")?.focus();
-    function closeOnEscape(event:KeyboardEvent){if(event.key==="Escape"){setMenuOpen(false);triggerRef.current?.focus();}}
-    function closeOutside(event:PointerEvent){if(event.target instanceof Node&&!menuRef.current?.contains(event.target)&&!triggerRef.current?.contains(event.target))setMenuOpen(false);}
-    function closeOnResize(){if(window.innerWidth>720)setMenuOpen(false);}
-    document.addEventListener("keydown",closeOnEscape);document.addEventListener("pointerdown",closeOutside);window.addEventListener("resize",closeOnResize);
-    return()=>{document.removeEventListener("keydown",closeOnEscape);document.removeEventListener("pointerdown",closeOutside);window.removeEventListener("resize",closeOnResize);};
-  },[menuOpen]);
-  function select(){setMenuOpen(false);}
-  return <nav className={styles.navbar} aria-label="Ana menü"><div className={"container "+styles.container}><a href="#hero" className={styles.logo} aria-label="Safa İlhan Duman — sayfa başı" onClick={select}><Prompt cursor/></a><ul className={styles.links}>{navigation.map((item,i)=><li key={item.id}><a href={"#"+item.id} className={styles.link+(active===item.id?" "+styles.active:"")} aria-current={active===item.id?"location":undefined}>{i+1}:{item.label}{active===item.id&&<span aria-hidden="true">*</span>}</a></li>)}</ul><div className={styles.actions}><Button href={cvRequestHref} small className={styles.cv} title="E-posta uygulamanda CV talebi hazırla">CV talep et <Icon name="mail" size={13}/></Button><button className={styles.iconButton} onClick={toggleTheme} aria-label={theme==="dark"?"Açık temaya geç":"Koyu temaya geç"} title={theme==="dark"?"Açık temaya geç":"Koyu temaya geç"}><Icon name={theme==="dark"?"sun":"moon"}/></button><button ref={triggerRef} className={styles.iconButton+" "+styles.menuButton} onClick={()=>setMenuOpen(!menuOpen)} aria-label={menuOpen?"Menüyü kapat":"Menüyü aç"} aria-expanded={menuOpen} aria-controls="mobile-navigation"><Icon name={menuOpen?"close":"menu"}/></button></div></div>{menuOpen&&<div ref={menuRef} id="mobile-navigation" className={styles.mobileMenu}><div className="container"><Prompt command="ls ~/"/><ul>{navigation.map((item,i)=><li key={item.id}><a href={"#"+item.id} className={styles.mobileLink+(active===item.id?" "+styles.active:"")} aria-current={active===item.id?"location":undefined} onClick={select}>{i+1}:{item.label}{active===item.id&&<span aria-hidden="true">*</span>}</a></li>)}</ul><Button href={cvRequestHref} variant="primary" className={styles.mobileCv} onClick={select} title="E-posta uygulamanda CV talebi hazırla"><Icon name="mail"/>CV talep et</Button></div></div>}</nav>;
+    function closeOnEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") { setMenuOpen(false); triggerRef.current?.focus(); }
+    }
+    function closeOutside(event: PointerEvent) {
+      if (event.target instanceof Node && !menuRef.current?.contains(event.target) && !triggerRef.current?.contains(event.target)) setMenuOpen(false);
+    }
+    function closeOnResize() { if (window.innerWidth > 760) setMenuOpen(false); }
+    document.addEventListener("keydown", closeOnEscape);
+    document.addEventListener("pointerdown", closeOutside);
+    window.addEventListener("resize", closeOnResize);
+    return () => {
+      document.removeEventListener("keydown", closeOnEscape);
+      document.removeEventListener("pointerdown", closeOutside);
+      window.removeEventListener("resize", closeOnResize);
+    };
+  }, [menuOpen]);
+
+  const close = () => setMenuOpen(false);
+  const links = (className: string) => navigation.map(item => (
+    <li key={item.id}>
+      <a href={"#" + item.id} className={className + (active === item.id ? " " + styles.active : "")} aria-current={active === item.id ? "location" : undefined} onClick={close}>
+        {item.label}
+      </a>
+    </li>
+  ));
+
+  return (
+    <nav className={styles.navbar + (scrolled || menuOpen ? " " + styles.scrolled : "")} aria-label="Ana menü">
+      <div className={"container " + styles.container}>
+        <a href="#hero" className={styles.brand} onClick={close}>
+          <span className={styles.mark} aria-hidden="true" />
+          <span>{name}</span>
+        </a>
+        <ul className={styles.links}>{links(styles.link)}</ul>
+        <div className={styles.actions}>
+          <Button href="#contact" small variant="primary" className={styles.cta}>Bana yaz</Button>
+          <button
+            ref={triggerRef}
+            className={styles.menuButton}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? "Menüyü kapat" : "Menüyü aç"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+          >
+            {menuOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
+          </button>
+        </div>
+      </div>
+      {menuOpen && (
+        <div ref={menuRef} id="mobile-navigation" className={styles.mobileMenu}>
+          <ul className="container">{links(styles.mobileLink)}</ul>
+        </div>
+      )}
+    </nav>
+  );
 }

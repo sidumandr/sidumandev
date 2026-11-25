@@ -1,5 +1,6 @@
-.footer { padding-block:32px; border-top:1px solid var(--line); }
-.container { display:flex; align-items:center; justify-content:space-between; gap:24px; }
-.container p { color:var(--ink-faint); font:400 11px/20px var(--font-mono),monospace; }
-.container p svg { color:var(--accent); margin-inline:3px; }
-@media(max-width:720px) { .container { flex-direction:column; align-items:flex-start; gap:16px; } }
+.footer { padding-block:32px 28px; border-top:1px solid var(--line); color:var(--ink-faint); font-size:14px; }
+.container { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px 24px; }
+.links { display:flex; gap:20px; }
+.links a { color:var(--ink-muted); transition:color 160ms; }
+.links a:hover { color:var(--ink); }
+.privacy { margin-top:14px; font-size:12.5px; }
