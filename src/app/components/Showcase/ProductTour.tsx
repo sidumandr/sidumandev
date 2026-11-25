@@ -4,6 +4,7 @@ import { Check } from "lucide-react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import type { FlagshipTourStep, TourScreenId } from "@/lib/content/schema";
 import { AddressScreen } from "./AddressScreen";
+import { MockDataNote } from "./MockDataNote";
 import { MonitoringScreen } from "./MonitoringScreen";
 import { OperationsScreen } from "./OperationsScreen";
 import { OverviewScreen } from "./OverviewScreen";
@@ -94,7 +95,7 @@ export function ProductTour({ steps }: { steps: FlagshipTourStep[] }) {
               {step.points.map(point => <li key={point}><Check size={16} aria-hidden="true" />{point}</li>)}
             </ul>
           )}
-          <p className={styles.note}>Ekranlar yeniden çizildi, içindeki tüm veriler örnektir.</p>
+          <p className={styles.note}><MockDataNote /></p>
         </div>
         <div className={styles.screens}>
           {steps.map((item, itemIndex) => {

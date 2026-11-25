@@ -17,7 +17,7 @@
 .showcase { position:relative; margin-top:clamp(56px,8vw,96px); }
 .shot { position:relative; }
 .shot::before { content:""; position:absolute; inset:8% 6% -6%; z-index:-1; background:radial-gradient(closest-side,rgb(var(--accent-rgb) / .2),transparent 70%); filter:blur(30px); }
-.caption { margin-top:14px; color:var(--ink-faint); font:400 12px/18px var(--font-mono),monospace; text-align:center; }
+.caption { margin-top:16px; text-align:center; }
 .metrics { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:clamp(36px,5vw,56px); border-block:1px solid var(--line); }
 .metrics>div { display:flex; flex-direction:column-reverse; gap:6px; padding:28px 24px; text-align:center; }
 .metrics>div+div { border-left:1px solid var(--line); }

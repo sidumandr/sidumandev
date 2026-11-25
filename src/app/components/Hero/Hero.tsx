@@ -3,6 +3,7 @@ import { ArrowDown, Mail } from "lucide-react";
 import type { AppearanceContent, ContactContent, FlagshipContent, HeroContent } from "@/lib/content/schema";
 import { Button } from "../ui/Button";
 import { HeroBackground, HorizonArc } from "./HeroBackground";
+import { MockDataNote } from "../Showcase/MockDataNote";
 import { OverviewScreen } from "../Showcase/OverviewScreen";
 import { ScreenFrame } from "../Showcase/ScreenFrame";
 import styles from "./hero.module.css";
@@ -66,7 +67,7 @@ export default function Hero({ hero, flagship, contact, appearance, images }: {
           <ScreenFrame path="operasyon-paneli / genel-bakış" label="Ana projenin genel bakış ekranı: toplam dosya sayısı, kesinleşme oranı ve dosyaların aşamalar boyunca ilerleyişi. Veriler örnektir." height={860}>
             <OverviewScreen />
           </ScreenFrame>
-          <figcaption className={styles.caption}>Ekran yeniden çizildi, tüm veriler örnektir.</figcaption>
+          <figcaption className={styles.caption}><MockDataNote /></figcaption>
         </figure>
         {flagship.metrics.length > 0 && (
           <dl className={styles.metrics}>
