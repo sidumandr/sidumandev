@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// Sayfa içeriğinin bölümleri (hero, hakkımda, iletişim, seo, ana proje).
+/// Her satır, src/lib/content/schema.ts içindeki şemayla doğrulanan bir JSON tutar.
+model Setting {
+  key       String   @id
+  value     Json
+  updatedAt DateTime @updatedAt @db.Timestamptz(3)
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  summary     String
+  description String   @default("")
+  tags        String[]
+  githubUrl   String?
+  liveUrl     String?
+  imageUrl    String?
+  year        Int?
+  featured    Boolean  @default(false)
+  archived    Boolean  @default(false)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt   DateTime @updatedAt @db.Timestamptz(3)
+
+  @@index([archived, sortOrder])
+}
+
+/// Çerezsiz ziyaretçi istatistikleri. IP adresi saklanmaz; `visitor`, IP + tarayıcı
+/// bilgisinin günlük değişen anahtarla alınmış özetidir ve ertesi gün eşleştirilemez.
+model Event {
+  id        BigInt   @id @default(autoincrement())
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+  /// pageview | engagement | section | click
+  type      String
+  name      String?
+  label     String?
+  path      String
+  visitor   String
+  pageview  String?
+  referrer  String?
+  utmSource String?
+  country   String?
+  device    String?
+  browser   String?
+  os        String?
+  duration  Int?
+
+  @@index([type, createdAt])
+  @@index([createdAt])
+}

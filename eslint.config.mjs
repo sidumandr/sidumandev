@@ -14,6 +14,8 @@ const eslintConfig = defineConfig([
     "build/**",
     "dev/**",
     "next-env.d.ts",
+    // Prisma tarafından üretilen istemci
+    "src/generated/**",
   ]),
 ]);
 
