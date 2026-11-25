@@ -47,7 +47,7 @@ export function MonitoringScreen() {
             <thead><tr><th>Saat</th><th>Proje</th><th>Hesap</th><th>İşlem</th><th>Sonuç</th><th>Süre</th></tr></thead>
             <tbody>
               {rows.map((row, index) => (
-                <tr key={row.time} className={index === 0 && tick > 0 ? styles.newRow : undefined}>
+                <tr key={row.time} data-spot={index < 3 ? "latest" : undefined} className={index === 0 && tick > 0 ? styles.newRow : undefined}>
                   <td>{row.time}</td>
                   <td>{row.project}</td>
                   <td><span className={styles.method}>{row.account}</span></td>
@@ -60,7 +60,7 @@ export function MonitoringScreen() {
           </table>
         </div>
         <div>
-          <div className={styles.card}>
+          <div className={styles.card} data-spot="tours">
             <div className={styles.streamHead}><strong>Tam tur: bir proje kaç günde baştan sona okunuyor</strong></div>
             <table className={styles.table + " " + styles.tour}>
               <thead><tr><th>Proje</th><th>Son tam tur</th><th>Şu anki tur</th></tr></thead>
@@ -82,7 +82,7 @@ export function MonitoringScreen() {
               </tbody>
             </table>
           </div>
-          <div className={styles.metricList}>
+          <div className={styles.metricList} data-spot="health">
             <div><b>Harcama</b><span>maliyet kayıtları, son 30 gün</span></div>
             <div><b>Giriş</b><span>giriş denemeleri, son 24 saat</span></div>
             <div><b>Redis</b><span>bellek, istemci, gecikme</span></div>

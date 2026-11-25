@@ -1,8 +1,7 @@
 "use client";
-import { Download } from "lucide-react";
 import { AppShell } from "./AppShell";
 import { maskedId, mockCourts, mockFileNumbers, mockPeople, mockProjects } from "./mock";
-import { formatNumber, useTicker } from "./ScreenFrame";
+import { formatNumber, useScreen, useTicker } from "./ScreenFrame";
 import styles from "./app.module.css";
 
 type Tone = "chipGray" | "chipRed" | "chipOrange" | "chipBlue" | "chipGreen";
@@ -28,18 +27,20 @@ const outcomes: ({ chip: string; tone: Tone } | string)[] = [
   "e-Tebligat okundu",
 ];
 
+/** Turda durumu değişen dosya: tebligat tamamlanınca kesinleşir ve havuzu değişir. */
+const FLIP_ROW = 3;
+
 /** Ana sayfa listesi: dosyalar durumlarına göre havuzlarda, klavyeyle gezilebilir tablo. */
 export function PoolsScreen() {
-  const tick = useTicker(1400);
+  const { beat } = useScreen();
+  const tick = useTicker(1100);
   const selected = tick % statuses.length;
+  const flipped = beat >= 0;
   return (
-    <AppShell active="files">
-      <div className={styles.pageTitle} style={{ justifyContent: "space-between" }}>
-        <span style={{ display: "flex", alignItems: "baseline", gap: 14 }}>
-          <h3>Ana sayfa</h3>
-          <span><b>10.248</b> dosya, <b>1.736</b> tanesi ilk ödeme emri sürecinde</span>
-        </span>
-        <span className={styles.topButton}><Download size={15} />Takipteki dosyalar Excel</span>
+    <AppShell active="files" bump={{ label: "Kesinleşme işlenmemiş", on: beat >= 1 }}>
+      <div className={styles.pageTitle}>
+        <h3>Ana sayfa</h3>
+        <span><b>10.248</b> dosya, <b>1.736</b> tanesi ilk ödeme emri sürecinde</span>
       </div>
       <div className={styles.card}>
         <div className={styles.cardHeader}>
@@ -53,15 +54,21 @@ export function PoolsScreen() {
           <tbody>
             {statuses.map((status, index) => {
               const outcome = outcomes[index];
+              const flip = index === FLIP_ROW ? "flip" : undefined;
+              const chip = <span className={styles.chip + " " + styles[status.tone]}>{status.label}</span>;
               return (
-                <tr key={index} className={styles.row + (index === selected ? " " + styles.selected : "")} style={{ animationDelay: `${index * 70}ms` }}>
-                  <td>{mockProjects[index % mockProjects.length]}</td>
-                  <td><span className={styles.chip + " " + styles[status.tone]}>{status.label}</span></td>
-                  <td>{mockCourts[index]}</td>
-                  <td><span className={styles.fileNo}>{mockFileNumbers[index]}</span></td>
+                <tr key={index} data-spot={index === selected ? "row" : undefined} className={styles.row + (index === selected ? " " + styles.selected : "") + (index === FLIP_ROW && flipped ? " " + styles.flashRow : "")} style={{ animationDelay: `${index * 70}ms` }}>
+                  <td data-spot={flip}>{mockProjects[index % mockProjects.length]}</td>
+                  <td data-spot={flip}>
+                    {index === FLIP_ROW ? (
+                      <span className={styles.swap + (flipped ? " " + styles.swapOn : "")}>{chip}<span className={styles.chip + " " + styles.chipGray}>Kesinleşti</span></span>
+                    ) : chip}
+                  </td>
+                  <td data-spot={flip}>{mockCourts[index]}</td>
+                  <td data-spot={flip}><span className={styles.fileNo}>{mockFileNumbers[index]}</span></td>
                   <td><span className={styles.person}>{mockPeople[index]}<small>{maskedId(index)}</small></span></td>
-                  <td>Tebliğ<span className={styles.sub}>{deliveries[index]}</span></td>
-                  <td>{typeof outcome === "string" ? outcome : <span className={styles.chip + " " + styles[outcome.tone]}>{outcome.chip}</span>}</td>
+                  <td data-spot={index < 3 ? "outcome" : undefined}>Tebliğ<span className={styles.sub}>{deliveries[index]}</span></td>
+                  <td data-spot={index < 3 ? "outcome" : undefined}>{typeof outcome === "string" ? outcome : <span className={styles.chip + " " + styles[outcome.tone]}>{outcome.chip}</span>}</td>
                 </tr>
               );
             })}

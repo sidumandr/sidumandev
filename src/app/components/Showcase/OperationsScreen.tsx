@@ -1,5 +1,5 @@
 "use client";
-import { Check, Clock3, Download, SlidersHorizontal } from "lucide-react";
+import { Check, Clock3, SlidersHorizontal } from "lucide-react";
 import { AppShell } from "./AppShell";
 import { mockCourts, mockFileNumbers, mockProjects } from "./mock";
 import { formatNumber, useScreen, useTicker } from "./ScreenFrame";
@@ -25,10 +25,7 @@ export function OperationsScreen() {
   const sent = reduced ? items.length : Math.min(tick % (items.length + 4), items.length);
   return (
     <AppShell active="operations">
-      <div className={styles.pageTitle} style={{ justifyContent: "space-between" }}>
-        <h3>İşlemler</h3>
-        <span className={styles.topButton}><Download size={15} />İşlemler Excel</span>
-      </div>
+      <div className={styles.pageTitle}><h3>İşlemler</h3></div>
       <div className={styles.tabs}>
         <span className={styles.tabActive}>Gönderime hazır<b>128</b></span>
         <span>Tebligat gönderimi<b>602</b></span>
@@ -38,7 +35,7 @@ export function OperationsScreen() {
       </div>
       <div className={styles.opsGrid}>
         <div className={styles.card}>
-          <div className={styles.subTabs}>
+          <div className={styles.subTabs} data-spot="subtabs">
             <span className={styles.tabActive}>Gönderilebilir 128</span>
             <span>Bekletilen 109</span>
             <span>Gönderilemeyen 431</span>
@@ -56,7 +53,7 @@ export function OperationsScreen() {
             <thead><tr><th>Dosya no</th><th>Proje</th><th>İcra dairesi</th><th>Tür</th><th>Adres kaynağı</th><th>Tutar</th><th>Saat</th></tr></thead>
             <tbody>
               {items.map((item, index) => (
-                <tr key={index} className={styles.row + (index < sent ? " " + styles.selected : "")} style={{ animationDelay: `${index * 60}ms` }}>
+                <tr key={index} data-spot={index === sent - 1 ? "sending" : undefined} className={styles.row + (index < sent ? " " + styles.selected : "")} style={{ animationDelay: `${index * 60}ms` }}>
                   <td><span className={styles.fileNo}>{mockFileNumbers[(index + 4) % mockFileNumbers.length]}</span></td>
                   <td>{mockProjects[(index + 1) % mockProjects.length]}</td>
                   <td>{mockCourts[(index + 3) % mockCourts.length]}</td>
@@ -70,8 +67,8 @@ export function OperationsScreen() {
           </table>
         </div>
         <div>
-          <span className={styles.autoSend}>Otomatik gönderim açık</span>
-          <div className={styles.queue}>
+          <span className={styles.autoSend} data-spot="queue">Otomatik gönderim açık</span>
+          <div className={styles.queue} data-spot="queue">
             <h5>Gönderim sırası <small>{items.length - sent} dosya kaldı</small></h5>
             <div className={styles.progress}><i style={{ width: `${(sent / items.length) * 100}%` }} /></div>
             <div className={styles.queueRow}><span>Tamamlanan</span><b className={styles.money}>{sent}</b></div>

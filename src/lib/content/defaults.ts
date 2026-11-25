@@ -54,6 +54,7 @@ export const defaultContent: SiteContent = {
     title: "Kurumsal iş akışı ve operasyon platformu",
     summary:
       "Birbirine bağlı iş süreçlerini tek yerden yöneten, benzer kayıtları yapay zekâyla karşılaştırıp son kararı personele bırakan bir platform. 100.000'den fazla kayıt ve 150'yi aşkın personel için tasarlandı.",
+    tagline: "Birbirine bağlı iş süreçlerini tek yerden yöneten bir platform. Teknik tasarımı ve geliştirmesi baştan sona bende.",
     role: "Teknik tasarım ve geliştirmenin tamamı",
     ownership:
       "Projenin teknik tasarımını ve uçtan uca geliştirmesini üstleniyorum. Operasyonel ihtiyaçları analiz ederek iş kurallarını yazılım modellerine dönüştürüyor; backend, kullanıcı arayüzü, veri katmanı ve canlı ortam altyapısını geliştiriyorum.",
@@ -81,25 +82,25 @@ export const defaultContent: SiteContent = {
         screen: "pools",
         title: "Her dosya kendi havuzunda",
         text: "Dosyalar tebligat, itiraz, kesinleşme ya da haciz durumuna göre kendiliğinden doğru havuza düşüyor. Personel neye bakacağını aramıyor, kendi listesini açıyor.",
-        points: ["Durum değiştikçe havuzlar kendini günceller", "Her listeden tek tıkla Excel çıktısı", "Klavye kısayollarıyla hızlı gezinme"],
+        points: ["Durum değişince dosya kendiliğinden doğru havuza geçer", "Satırlar arasında klavyeyle gezinme, Enter ile açma", "Tebligat ve haciz gelişmeleri satıra kendiliğinden işlenir"],
       },
       {
         screen: "address",
         title: "Adres bulunana kadar sırayla deneme",
         text: "Tebligat iade dönünce sistem yeni adresi bir merdiven gibi sırayla farklı kaynaklarda arıyor. Her basamağın sonucu ve zamanı kaydediliyor, sıradaki adım ekranda görünüyor.",
-        points: ["Kaynaklar belirli bir sırayla, tekrar etmeden denenir", "Her sorgunun sonucu dosyada saklanır", "İtiraz gelen dosyada araştırma kendiliğinden durur"],
+        points: ["Kaynaklar belirli bir sırayla, tekrar etmeden denenir", "Her sorgunun sonucu ve saati dosyada saklanır", "İtiraz gelen dosyada araştırma kendiliğinden durur"],
       },
       {
         screen: "operations",
         title: "Toplu gönderim, kontrollü ve maliyeti belli",
         text: "Gönderilecek işlemler gönderilebilir, bekletilen ve engellenen olarak ayrışıyor. Otomatik gönderim belirlenen saat aralığında çalışıyor ve her işlemin tutarı göndermeden önce görünüyor.",
-        points: ["Aynı dosyaya ikinci gönderim kilitlenir", "Günlük bütçe ve harcama takibi", "Ön koşulu eksik işlemler ayrı listede bekler"],
+        points: ["İşlemler gönderilebilir, bekletilen ve engellenen olarak ayrışır", "Otomatik gönderim belirlenen saat aralığında, sırayla", "Aynı dosyaya ikinci gönderim kilitlenir, harcama bütçeyle sınırlı"],
       },
       {
         screen: "monitoring",
         title: "Dış sistemlerle her konuşma kayıt altında",
         text: "Entegrasyonlara giden her istek sonucu ve süresiyle canlı olarak izleniyor. Her projenin bütün dosyalarının kaç günde bir baştan sona okunduğu da ölçülüyor.",
-        points: ["Canlı istek akışı ve CSV çıktısı", "Proje bazında tam tur süresi", "Harcama, Redis ve servis sağlığı tek ekranda"],
+        points: ["Her isteğin sonucu ve süresi canlı akışta", "Proje bazında tam tur süresi", "Harcama, Redis ve servis sağlığı tek ekranda"],
       },
     ],
     sections: [

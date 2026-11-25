@@ -58,8 +58,10 @@ const groups: NavGroup[] = [
 ];
 
 /** Ana projenin açık temalı arayüz kabuğu; marka, alan adı ve kullanıcı bilgileri nötrdür. */
-export function AppShell({ active, children, updatedAt = "12.03.2026 14:20", paymentOrderOpen = true }: {
+export function AppShell({ active, children, updatedAt = "12.03.2026 14:20", paymentOrderOpen = true, bump }: {
   active: ShellNav;
+  /** Turda sayısı bir artan havuz; `on` olunca sayı değişir ve havuz ışığa alınabilir (`data-spot="pool"`). */
+  bump?: { label: string; on: boolean };
   children: ReactNode;
   updatedAt?: string;
   /** Ödeme Emri açık mı; kapalıyken altındaki başlıklar da menüde görünür. */
@@ -95,10 +97,12 @@ export function AppShell({ active, children, updatedAt = "12.03.2026 14:20", pay
                   isActive ? styles.navActive : "",
                 ].filter(Boolean).join(" ");
                 return (
-                  <span key={item.label} className={className} data-active={isActive || undefined}>
+                  <span key={item.label} className={className} data-active={isActive || undefined} data-spot={bump?.label === item.label ? "pool" : undefined}>
                     {item.icon && <item.icon size={16} strokeWidth={1.8} />}
                     {item.label}
-                    {item.count !== undefined && <em>{formatNumber(item.count)}</em>}
+                    {item.count !== undefined && (bump?.label === item.label ? (
+                      <em className={styles.swap + (bump.on ? " " + styles.swapOn : "")}><span>{formatNumber(item.count)}</span><span>{formatNumber(item.count + 1)}</span></em>
+                    ) : <em>{formatNumber(item.count)}</em>)}
                     {chevron === "right" && <ChevronRight size={15} className={styles.chevron} />}
                     {chevron === "down" && <ChevronDown size={15} className={styles.chevron} />}
                   </span>

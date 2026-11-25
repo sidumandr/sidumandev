@@ -1,5 +1,5 @@
 "use client";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { AppShell } from "./AppShell";
 import { maskedId, mockCourts, mockFileNumbers, mockPeople } from "./mock";
 import { useScreen, useTicker } from "./ScreenFrame";
@@ -43,13 +43,12 @@ export function AddressScreen() {
         <span className={styles.muted} style={{ fontSize: 13.5 }}>Durum</span>
         <span className={styles.field + " " + styles.fieldStrong}>Tümü 612</span>
         <span className={styles.field + " " + styles.fieldStrong}>Süzgeçler</span>
-        <span className={styles.topButton} style={{ marginLeft: "auto" }}><Download size={15} />612 dosya Excel</span>
       </div>
       <div className={styles.split}>
         <div className={styles.card}>
           <div className={styles.listHead}><span>Dosya ve borçlu</span><span>Merdiven ve hazır adres</span></div>
           {rows.map((row, index) => (
-            <div key={index} className={styles.addressRow + (index === focus ? " " + styles.addressActive : "")}>
+            <div key={index} data-spot={index === 0 ? "stopped" : index >= 1 && index <= 4 ? "ladders" : undefined} className={styles.addressRow + (index === focus ? " " + styles.addressActive : "")}>
               <span><b>{mockFileNumbers[index + 2]}</b>{row.stopped && <span className={styles.chip + " " + styles.chipRed} style={{ marginLeft: 10, height: 20 }}>İtiraz, durdu</span>}</span>
               <span className={styles.segments}>
                 {sources.map((_, step) => (
@@ -72,8 +71,8 @@ export function AddressScreen() {
             <dt>Çalışılmış adres</dt><dd>var</dd>
             <dt>Son sorgu</dt><dd style={{ fontFamily: "var(--font-mono)" }}>12.03.2026 09:42</dd>
           </dl>
-          <p className={styles.ladderTitle}>Merdiven</p>
-          <div className={styles.ladder}>
+          <p className={styles.ladderTitle} data-spot="ladder">Merdiven</p>
+          <div className={styles.ladder} data-spot="ladder">
             {results.map((step, index) => (
               <span key={step.label} className={styles.step + (index < revealed ? " " + styles.stepOn : "") + (step.state === "sırada" ? " " + styles.stepCurrent : "")}>
                 <b>{step.label}</b> <span className={styles.muted}>{step.state}</span>

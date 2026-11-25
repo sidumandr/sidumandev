@@ -1,11 +1,5 @@
 /* Bir istek turu 4.8 saniye sürer; paketler ve kutuların parlaması aynı döngüye bağlıdır. */
-.section { --cycle:4.8s; margin-top:clamp(36px,5vw,56px); padding-top:clamp(28px,4vw,44px); border-top:1px solid var(--line); }
-.intro { display:flex; flex-direction:column; gap:12px; max-width:680px; }
-.kicker { color:var(--accent); font:500 13px/1 var(--font-mono),monospace; }
-.intro h4 { font-size:clamp(22px,2.6vw,30px); letter-spacing:-.03em; line-height:1.15; }
-.intro p { color:var(--ink-muted); font-size:16px; line-height:1.7; }
-
-.body { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr); gap:clamp(28px,4vw,56px); align-items:center; margin-top:clamp(24px,3vw,36px); }
+.body { --cycle:4.8s; display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr); gap:clamp(28px,4vw,56px); align-items:center; }
 
 /* Şema */
 .diagram { position:relative; }

@@ -12,13 +12,16 @@ import { PoolsScreen } from "./PoolsScreen";
 import { ScreenFrame, type Camera } from "./ScreenFrame";
 import styles from "./tour.module.css";
 
-/** Her sahnede kamera bir bölgeye yaklaşır; `point`, o an anlatılan maddenin sırasıdır. */
-type Scene = Omit<Camera, "callout"> & { point: number };
+/**
+ * Bir sahne: kamera `spot` ile işaretli bileşene yaklaşır, geri kalanı kararır. `point`, soldaki
+ * listede vurgulanan maddedir; `say` verilirse açıklamada o maddenin yerine bu yazılır.
+ */
+type Scene = Omit<Camera, "callout"> & { point: number; say?: string; hold?: number };
 
 const INTRO = 1300;
-const SCENE = 3400;
-const OUTRO = 1300;
-const stepDuration = (scenes: number) => INTRO + scenes * SCENE + OUTRO;
+const SCENE = 3600;
+const OUTRO = 1200;
+const holdOf = (scene: Scene) => scene.hold ?? SCENE;
 
 const screens: Record<TourScreenId, { path: string; height: number; label: string; scenes: Scene[]; render: () => React.ReactNode }> = {
   pools: {
@@ -26,9 +29,10 @@ const screens: Record<TourScreenId, { path: string; height: number; label: strin
     height: 780,
     label: "Durumlarına göre havuzlara ayrılmış dosya listesi",
     scenes: [
-      { focus: [140, 610], zoom: 1.7, cursor: [150, 616], click: true, point: 0 },
-      { focus: [1120, 96], zoom: 1.9, cursor: [1110, 100], click: true, point: 1 },
-      { focus: [700, 600], zoom: 1.45, cursor: [760, 556], point: 2 },
+      { spot: "flip", point: 0, say: "Tebliğ tamamlandı, dosya kendiliğinden Kesinleşti oldu" },
+      { spot: "pool", zoom: 2.3, click: true, point: 0, say: "Dosya Kesinleşme işlenmemiş havuzuna geçti" },
+      { spot: "row", focus: [760, 430], zoom: 1.4, cursor: false, keys: ["↓", "Enter"], caption: "top", point: 1, hold: 4800 },
+      { spot: "outcome", point: 2 },
     ],
     render: () => <PoolsScreen />,
   },
@@ -37,9 +41,9 @@ const screens: Record<TourScreenId, { path: string; height: number; label: strin
     height: 780,
     label: "Adres kaynaklarının sırayla denendiği adres araştırma ekranı",
     scenes: [
-      { focus: [790, 330], zoom: 1.7, cursor: [826, 306], point: 0 },
-      { focus: [1080, 560], zoom: 1.6, cursor: [1010, 600], point: 1 },
-      { focus: [420, 262], zoom: 1.8, cursor: [446, 264], click: true, point: 2 },
+      { spot: "ladders", point: 0 },
+      { spot: "ladder", point: 1, hold: 4600 },
+      { spot: "stopped", click: true, point: 2 },
     ],
     render: () => <AddressScreen />,
   },
@@ -48,9 +52,9 @@ const screens: Record<TourScreenId, { path: string; height: number; label: strin
     height: 780,
     label: "Toplu gönderim kuyruğu, saat aralığı ve maliyet özeti",
     scenes: [
-      { focus: [560, 200], zoom: 1.9, cursor: [612, 204], click: true, point: 2 },
-      { focus: [1100, 340], zoom: 1.8, cursor: [1150, 352], point: 1 },
-      { focus: [1100, 480], zoom: 1.8, cursor: [1010, 470], point: 0 },
+      { spot: "subtabs", click: true, point: 0 },
+      { spot: "sending", focus: [560, 470], zoom: 1.45, cursor: false, caption: "top", point: 1, hold: 4600 },
+      { spot: "queue", point: 2 },
     ],
     render: () => <OperationsScreen />,
   },
@@ -59,9 +63,9 @@ const screens: Record<TourScreenId, { path: string; height: number; label: strin
     height: 780,
     label: "Dış sistem isteklerinin canlı akışı ve tam tur süreleri",
     scenes: [
-      { focus: [520, 300], zoom: 1.6, cursor: [570, 292], point: 0 },
-      { focus: [1060, 300], zoom: 1.7, cursor: [1090, 330], point: 1 },
-      { focus: [1060, 560], zoom: 1.7, cursor: [1000, 560], point: 2 },
+      { spot: "latest", point: 0, hold: 4000 },
+      { spot: "tours", point: 1 },
+      { spot: "health", point: 2 },
     ],
     render: () => <MonitoringScreen />,
   },
@@ -70,9 +74,9 @@ const screens: Record<TourScreenId, { path: string; height: number; label: strin
     height: 860,
     label: "Toplam dosya, kesinleşme oranı ve dosyanın yolculuğu",
     scenes: [
-      { focus: [520, 300], zoom: 1.5, cursor: [560, 300], point: 0 },
-      { focus: [760, 640], zoom: 1.5, cursor: [760, 640], point: 1 },
-      { focus: [1100, 300], zoom: 1.6, cursor: [1100, 300], point: 2 },
+      { spot: "total", point: 0 },
+      { spot: "journey", point: 1, hold: 4000 },
+      { spot: "ring", point: 2 },
     ],
     render: () => <OverviewScreen />,
   },
@@ -108,7 +112,7 @@ export function ProductTour({ steps }: { steps: FlagshipTourStep[] }) {
   // Sahne akışı: tam görünüm, sırayla sahneler, tekrar tam görünüm, sonraki adım.
   useEffect(() => {
     if (!running || !config) return;
-    const delay = scene === -1 ? INTRO : scene < config.scenes.length ? SCENE : OUTRO;
+    const delay = scene === -1 ? INTRO : scene < config.scenes.length ? holdOf(config.scenes[scene]) : OUTRO;
     const timer = window.setTimeout(() => {
       if (scene < config.scenes.length) setScene(scene + 1);
       else {
@@ -121,8 +125,12 @@ export function ProductTour({ steps }: { steps: FlagshipTourStep[] }) {
 
   if (!step || !config) return null;
   const activeScene = scene >= 0 && scene < config.scenes.length ? config.scenes[scene] : null;
-  const camera: Camera | null = activeScene ? { ...activeScene, callout: step.points[activeScene.point] } : null;
-  const total = stepDuration(config.scenes.length);
+  let camera: Camera | null = null;
+  if (activeScene) {
+    const { point, say, ...shot } = activeScene;
+    camera = { ...shot, callout: say ?? step.points[point] };
+  }
+  const total = INTRO + config.scenes.reduce((sum, item) => sum + holdOf(item), 0) + OUTRO;
 
   function select(next: number) {
     setIndex(next);
@@ -175,7 +183,6 @@ export function ProductTour({ steps }: { steps: FlagshipTourStep[] }) {
         <div id={`${id}-panel`} role="tabpanel" aria-labelledby={`${id}-tab-${current}`} className={styles.copy} key={current}>
           <span className={styles.kicker}>Adım {current + 1} / {steps.length}</span>
           <h4>{step.title}</h4>
-          <p>{step.text}</p>
           {step.points.length > 0 && (
             <ul>
               {step.points.map((point, pointIndex) => (
@@ -193,7 +200,7 @@ export function ProductTour({ steps }: { steps: FlagshipTourStep[] }) {
             const isCurrent = itemIndex === current;
             return (
               <div key={item.screen + itemIndex} className={styles.screen + (isCurrent ? " " + styles.screenActive : "")} aria-hidden={!isCurrent}>
-                <ScreenFrame path={screen.path} label={screen.label + ". Veriler örnektir."} height={screen.height} active={isCurrent} camera={isCurrent ? camera : undefined}>
+                <ScreenFrame path={screen.path} label={(item.text || screen.label) + " Veriler örnektir."} height={screen.height} active={isCurrent} camera={isCurrent ? camera : undefined} beat={isCurrent ? scene : -1}>
                   {screen.render()}
                 </ScreenFrame>
               </div>

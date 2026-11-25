@@ -68,6 +68,8 @@ export const flagshipTourStepSchema = z.object({
 export const flagshipSchema = z.object({
   eyebrow: text(40),
   title: text(120),
+  /** Ana proje kartındaki tek satırlık tanıtım; ayrıntılar detay penceresindedir. */
+  tagline: text(160),
   summary: text(400),
   role: text(80),
   ownership: text(800),

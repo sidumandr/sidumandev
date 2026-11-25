@@ -187,6 +187,15 @@
 .method { font-family:var(--font-mono),monospace; color:var(--text); }
 .newRow td { animation:flash 1.2s ease-out; }
 @keyframes flash { from { background:#fff7d6; } }
+/* Turda değişen değer: eskisi kaybolur, yenisi parlayarak gelir. */
+.swap { display:inline-grid; }
+.swap > * { grid-area:1 / 1; }
+.swap > :last-child { opacity:0; }
+.swapOn > :first-child { animation:swapOut 300ms ease-in 1300ms forwards; }
+.swapOn > :last-child { animation:swapIn 700ms var(--ease-out) 1300ms forwards; }
+@keyframes swapOut { to { opacity:0; transform:translateY(-8px); } }
+@keyframes swapIn { 0% { opacity:0; transform:translateY(8px) scale(.9); } 45% { opacity:1; transform:scale(1.2); } 100% { opacity:1; transform:none; } }
+.flashRow td { animation:flash 1.6s ease-out 1300ms; }
 .tour td { height:64px; font-size:13px; white-space:normal; vertical-align:top; padding-top:10px; }
 .tour td strong { font-size:15px; }
 .bar { height:6px; margin-top:6px; border-radius:3px; background:var(--soft-2); overflow:hidden; }

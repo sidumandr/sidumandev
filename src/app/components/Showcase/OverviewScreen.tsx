@@ -37,7 +37,7 @@ export function OverviewScreen() {
         <div>
           <p className={styles.date}>12 Mart 2026 Perşembe</p>
           <p className={styles.greeting}>İyi günler, Safa</p>
-          <div className={styles.bigNumber}><strong>{formatNumber(total)}</strong><span>dosya takipte</span></div>
+          <div className={styles.bigNumber} data-spot="total"><strong>{formatNumber(total)}</strong><span>dosya takipte</span></div>
           <div className={styles.pills}>
             <span className={styles.pill}><b>4</b> proje</span>
             <span className={styles.pill + " " + styles.pillLive}>Son senkron az önce</span>
@@ -49,7 +49,7 @@ export function OverviewScreen() {
           </div>
         </div>
         <div>
-          <div className={styles.ring}>
+          <div className={styles.ring} data-spot="ring">
             <svg viewBox="0 0 220 220" width="220" height="220">
               <circle cx="110" cy="110" r="92" fill="none" className={styles.ringTrack} strokeWidth="12" />
               <circle cx="110" cy="110" r="92" fill="none" className={styles.ringStroke} strokeWidth="12" strokeLinecap="round" strokeDasharray={circumference} strokeDashoffset={circumference * (1 - percent / 100)} />
@@ -60,7 +60,7 @@ export function OverviewScreen() {
         </div>
       </section>
 
-      <section className={styles.journeyCard}>
+      <section className={styles.journeyCard} data-spot="journey">
         <h4>Dosyanın yolculuğu</h4>
         <div className={styles.stages}>
           {journey.map(stage => (

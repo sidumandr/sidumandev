@@ -180,9 +180,10 @@ export function FlagshipForm({ initialValue }: { initialValue: FlagshipContent }
         <TextField label="Rol" value={value.role} onChange={set("role")} maxLength={80} />
       </div>
       <TextField label="Proje adı" value={value.title} onChange={set("title")} maxLength={120} />
+      <TextField label="Kart metni" value={value.tagline} onChange={set("tagline")} maxLength={160} hint={`Kartta başlığın altındaki kısa metin. ${value.tagline.length}/160`} />
       <TextField label="Özet" value={value.summary} onChange={set("summary")} multiline rows={3} maxLength={400} />
       <TextField label="Üstlendiğin sorumluluk" value={value.ownership} onChange={set("ownership")} multiline rows={4} maxLength={800} />
-      <ListField label="Öne çıkan başlıklar" value={value.pillars} onChange={set("pillars")} hint="Kartta simgeyle gösterilir, en fazla 4." />
+      <ListField label="Öne çıkan başlıklar" value={value.pillars} onChange={set("pillars")} hint="Detay penceresinde etiket olarak gösterilir, en fazla 4." />
       <div className={styles.field}>
         <span className={styles.label}>Rakamlar</span>
         <Repeater
@@ -202,7 +203,7 @@ export function FlagshipForm({ initialValue }: { initialValue: FlagshipContent }
       </div>
       <div className={styles.field}>
         <span className={styles.label}>Mimari ve teknolojiler</span>
-        <p className={styles.hint}>Turun altındaki mimari şeması ve teknoloji listesi. Şemanın kendisi sabittir; başlığı, metni ve listeyi buradan değiştirirsin.</p>
+        <p className={styles.hint}>Mimari ve teknolojiler penceresindeki şema ve liste. Şemanın kendisi sabittir; başlığı, metni ve listeyi buradan değiştirirsin.</p>
         <TextField label="Başlık" value={value.architectureTitle} onChange={set("architectureTitle")} maxLength={120} />
         <TextField label="Metin" value={value.architectureText} onChange={set("architectureText")} multiline rows={3} maxLength={500} hint={`${value.architectureText.length}/500`} />
         <Repeater
@@ -236,7 +237,7 @@ export function FlagshipForm({ initialValue }: { initialValue: FlagshipContent }
                 <SelectField label="Ekran" value={step.screen} onChange={screen => update({ ...step, screen })} options={tourScreenIds.map(id => ({ value: id, label: tourScreenLabels[id] }))} />
                 <TextField label="Başlık" value={step.title} onChange={title => update({ ...step, title })} maxLength={80} />
               </div>
-              <TextField label="Metin" value={step.text} onChange={text => update({ ...step, text })} multiline rows={3} maxLength={320} />
+              <TextField label="Ekran açıklaması" value={step.text} onChange={text => update({ ...step, text })} multiline rows={3} maxLength={320} hint="Ekran okuyucular için; sayfada görünmez." />
               <LinesField label="Maddeler" value={step.points} onChange={points => update({ ...step, points })} hint="Her satıra bir madde, en fazla 4." />
             </>
           )}
