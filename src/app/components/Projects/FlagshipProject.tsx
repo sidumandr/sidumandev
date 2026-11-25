@@ -17,7 +17,7 @@ export function FlagshipProject({ flagship }: { flagship: FlagshipContent }) {
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
-      <article className={styles.feature + " reveal"}>
+      <article id="flagship" className={styles.feature + " reveal"}>
         <div className={styles.glow} aria-hidden="true" />
         <div className={styles.head}>
           <div className={styles.headText}>

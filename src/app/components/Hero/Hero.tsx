@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { ArrowDown, Mail } from "lucide-react";
+import { ArrowDown, Mail, Star } from "lucide-react";
 import type { AppearanceContent, ContactContent, FlagshipContent, HeroContent } from "@/lib/content/schema";
 import { Button } from "../ui/Button";
 import { HeroBackground, HorizonArc } from "./HeroBackground";
@@ -63,6 +63,15 @@ export default function Hero({ hero, flagship, contact, appearance, images }: {
 
       <div className={"container " + styles.showcase + " enter"} style={order(5)}>
         {appearance.heroBackground === "horizon" && <HorizonArc />}
+        <div className={styles.shotHead}>
+          <p className={styles.shotTitle}>
+            <span className={styles.badge}><Star size={13} fill="currentColor" aria-hidden="true" /> Ana proje</span>
+            <span>{flagship.title}</span>
+          </p>
+          <a href="#flagship" className={styles.shotLink} data-track="cta_projects" data-track-label="Ana proje">
+            Projeyi incele <ArrowDown size={15} aria-hidden="true" />
+          </a>
+        </div>
         <figure className={styles.shot}>
           <ScreenFrame path="operasyon-paneli / genel-bakış" label="Ana projenin genel bakış ekranı: toplam dosya sayısı, kesinleşme oranı ve dosyaların aşamalar boyunca ilerleyişi. Veriler örnektir." height={860} glass>
             <OverviewScreen />
