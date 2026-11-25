@@ -19,7 +19,7 @@ export function ProjectCard({ project }: { project: ProjectView }) {
       <div className={styles.media}>
         <div className={styles.screen}>
           {project.imageUrl ? (
-            <Image src={project.imageUrl} alt={project.title + " arayüzünden ekran görüntüsü"} fill sizes="(max-width: 760px) 92vw, 540px" className={styles.image} />
+            <Image src={project.imageUrl} alt={project.title + " projesinin görseli"} fill sizes="(max-width: 760px) 92vw, 540px" className={styles.image} />
           ) : (
             <div className={styles.cover} aria-hidden="true">
               <span className={styles.coverTitle}>{project.title}</span>

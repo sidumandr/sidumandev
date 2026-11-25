@@ -165,6 +165,49 @@ type DefaultProject = Omit<ProjectView, "id">;
 /** Admin panelindeki "içe aktar" düğmesiyle veritabanına yazılan başlangıç projeleri. */
 export const defaultProjects: DefaultProject[] = [
   {
+    slug: "tabutabi",
+    title: "Tabutabi",
+    summary: "App Store'da yayında olan, takımla oynanan bir kelime anlatma oyunu. Yasaklı kelimeleri ses tanımayla dinleyen bir hakem tilki yakalıyor.",
+    description:
+      "Expo ve React Native ile geliştirilen mobil oyun. Yasaklı kelimeleri ses tanımayla yakalıyor, uygulama içi satın alma ve dokunsal geri bildirim içeriyor. Tanıtım sitesi Astro ile hazırlandı.",
+    tags: ["React Native", "Expo", "TypeScript", "Ses tanıma", "Zustand", "Astro"],
+    // Uygulamanın reposu gizli olduğu için kaynak kod bağlantısı yok.
+    githubUrl: null,
+    liveUrl: "https://tabutabi.com/",
+    imageUrl: "/images/projects/tabutabi.webp",
+    year: 2026,
+    featured: true,
+    archived: false,
+  },
+  {
+    slug: "cisid",
+    title: "cisid",
+    summary: "Go ile yazdığım, Docker üzerinde çalışan ve kendi sunucunda barındırılan açık kaynak bir CI/CD sistemi.",
+    description:
+      "Webhook ya da dal takibiyle tetiklenen işler Docker içinde çalışıyor, loglar canlı akıyor. Şifreli gizli değişkenler, Prometheus metrikleri, OpenTelemetry izleri, GitHub, GitLab, Gitea ve Bitbucket desteği ve Helm chart ile kurulum var. MIT lisanslı.",
+    tags: ["Go", "Docker", "PostgreSQL", "TypeScript", "Kubernetes"],
+    githubUrl: "https://github.com/sidumandr/cisid",
+    liveUrl: null,
+    imageUrl: "/images/projects/cisid.webp",
+    year: 2026,
+    featured: true,
+    archived: false,
+  },
+  {
+    slug: "biopotan",
+    title: "biopotan",
+    summary: "Hobi olarak geliştirdiğim, EKG, EMG ve EEG sinyallerini ölçen düşük maliyetli açık bir cihaz. Sinyaller ESP32'de işlenip web arayüzünde gösteriliyor.",
+    description:
+      "Cihaz yazılımı C++ ile ESP32 için, arayüz Svelte ve TypeScript ile yazılıyor. Geliştirme için sahte sinyal üreten bir sunucu var. Deneysel bir hobi projesi, tıbbi cihaz değil.",
+    tags: ["ESP32", "C++", "Svelte", "TypeScript"],
+    githubUrl: "https://github.com/sidumandr/biopotan",
+    liveUrl: null,
+    imageUrl: "/images/projects/biopotan.webp",
+    year: 2026,
+    featured: false,
+    archived: false,
+  },
+  {
     slug: "sidufy",
     title: "Sidufy",
     summary: "Şarkı listeleri, çalma kontrolleri ve ses dalgası görselleştirmeleri olan bir müzik uygulaması.",
