@@ -4,7 +4,7 @@ import { mockProjects } from "./mock";
 import { formatNumber, useTicker } from "./ScreenFrame";
 import styles from "./app.module.css";
 
-const methods = ["dosyaEvrakListesi", "evrakSayfaToplami", "arama", "barkodSorgu", "belgeGoruntule"];
+const methods = ["rotaHesapla", "kargoDurum", "arama", "barkodSorgu", "teslimBelgesi"];
 const accounts = ["GENEL", "TARAMA"];
 
 /** Sabit bir başlangıçtan geriye doğru, her satırı rastgele görünen ama tekrarlanabilir istek kaydı. */
@@ -21,9 +21,9 @@ function request(index: number) {
 }
 
 const tours = [
-  { project: "Proje A", last: "1 gün", start: 82, target: 99, left: "6 / 640 dosya kaldı", eta: "Yaklaşık bugün" },
-  { project: "Proje B", last: "2,1 gün", start: 88, target: 97, left: "48 / 1.590 dosya kaldı", eta: "Yaklaşık bugün" },
-  { project: "Proje C", last: "0,8 gün", start: 18, target: 41, left: "160 / 272 dosya kaldı", eta: "Yaklaşık 1,5 gün" },
+  { project: "Proje A", last: "1 gün", start: 82, target: 99, left: "6 / 640 gönderi kaldı", eta: "Yaklaşık bugün" },
+  { project: "Proje B", last: "2,1 gün", start: 88, target: 97, left: "48 / 1.590 gönderi kaldı", eta: "Yaklaşık bugün" },
+  { project: "Proje C", last: "0,8 gün", start: 18, target: 41, left: "160 / 272 gönderi kaldı", eta: "Yaklaşık 1,5 gün" },
 ];
 
 /** Entegrasyon izleme: dış sistemlere giden istekler canlı akar, tam tur süreleri ölçülür. */
@@ -61,7 +61,7 @@ export function MonitoringScreen() {
         </div>
         <div>
           <div className={styles.card} data-spot="tours">
-            <div className={styles.streamHead}><strong>Tam tur: bir proje kaç günde baştan sona okunuyor</strong></div>
+            <div className={styles.streamHead}><strong>Tam tur: bir projenin tüm gönderileri kaç günde taranıyor</strong></div>
             <table className={styles.table + " " + styles.tour}>
               <thead><tr><th>Proje</th><th>Son tam tur</th><th>Şu anki tur</th></tr></thead>
               <tbody>

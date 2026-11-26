@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import type { TechItem } from "@/lib/content/schema";
 import styles from "./architecture.module.css";
 
-const modules = ["Dosyalar", "Adres araştırma", "Tebligat", "Toplu işlemler", "Raporlar", "Yetki ve denetim"];
+const modules = ["Gönderiler", "Adres doğrulama", "Teslimat", "Rota ve kurye", "Raporlar", "Yetki ve denetim"];
 const runtime = ["Docker", "systemd", "CI/CD"];
 
 /** Bir istek turu: arayüzden API'ye, oradan veri katmanına ve kuyruğa, son olarak dış sistemlere. */
@@ -54,7 +54,7 @@ return (
           <p className={styles.runtimeNote}>Servisler Docker imajı olarak paketlenir, sunucuda systemd ile ayakta tutulur ve her birleştirmede CI/CD hattından geçer.</p>
           <div className={styles.externalColumn}>
             <Wire wait={2.4} className={styles.exitWire} />
-            <Node label="Dış sistemler" title="Entegrasyonlar" text="Sorgu ve gönderim servisleri" wait={3.36} className={styles.external} />
+            <Node label="Dış sistemler" title="Entegrasyonlar" text="Kargo, harita ve bildirim servisleri" wait={3.36} className={styles.external} />
           </div>
         </div>
       </figure>

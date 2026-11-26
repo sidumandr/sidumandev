@@ -10,7 +10,7 @@ export const defaultContent: SiteContent = {
     role: "Full-stack geliştirici",
     headline: "İş kuralı karmaşık, hata kaldırmayan yazılımlar geliştiriyorum.",
     subheadline:
-      "Şu sıralar 150'den fazla personel için tasarladığım bir iş akışı ve operasyon platformunu geliştiriyorum. Bunun dışında web, masaüstü ve mobil uygulamalar yapıyorum. En çok NestJS ve Next.js ile çalışıyorum.",
+      "Şu sıralar 150'den fazla personel için tasarladığım bir lojistik operasyon ve sevkiyat platformunu geliştiriyorum. Bunun dışında web, masaüstü ve mobil uygulamalar yapıyorum. En çok NestJS ve Next.js ile çalışıyorum.",
     available: true,
     availabilityText: "Şu an yeni projelere açığım.",
     stack: [
@@ -51,16 +51,16 @@ export const defaultContent: SiteContent = {
   },
   flagship: {
     eyebrow: "Ana proje",
-    title: "Kurumsal iş akışı ve operasyon platformu",
+    title: "Lojistik operasyon ve sevkiyat platformu",
     summary:
-      "Birbirine bağlı iş süreçlerini tek yerden yöneten, benzer kayıtları yapay zekâyla karşılaştırıp son kararı personele bırakan bir platform. 100.000'den fazla kayıt ve 150'yi aşkın personel için tasarlandı.",
-    tagline: "Birbirine bağlı iş süreçlerini tek yerden yöneten bir platform. Teknik tasarımı ve geliştirmesi baştan sona bende.",
+      "Gönderilerin depodan teslimata kadar bütün sürecini tek yerden yöneten, benzer adres kayıtlarını yapay zekâyla karşılaştırıp son kararı personele bırakan bir platform. 100.000'den fazla gönderi ve 150'yi aşkın personel için tasarlandı.",
+    tagline: "Depodan teslimata kadar sevkiyat süreçlerini tek yerden yöneten bir platform. Teknik tasarımı ve geliştirmesi baştan sona bende.",
     role: "Teknik tasarım ve geliştirmenin tamamı",
     ownership:
       "Projenin teknik tasarımını ve uçtan uca geliştirmesini üstleniyorum. Operasyonel ihtiyaçları analiz ederek iş kurallarını yazılım modellerine dönüştürüyor; backend, kullanıcı arayüzü, veri katmanı ve canlı ortam altyapısını geliştiriyorum.",
-    pillars: ["Süreç takibi", "Yapay zekâ ile karşılaştırma", "Geriye dönük izlenebilirlik"],
+    pillars: ["Sevkiyat takibi", "Yapay zekâ ile adres karşılaştırma", "Geriye dönük izlenebilirlik"],
     metrics: [
-      { value: "100.000+", label: "kayıt için tasarlandı" },
+      { value: "100.000+", label: "gönderi için tasarlandı" },
       { value: "150+", label: "personel için tasarlandı" },
       { value: "10.000+", label: "otomatik test" },
     ],
@@ -71,7 +71,7 @@ export const defaultContent: SiteContent = {
       { name: "Next.js", role: "Operasyon paneli ve raporlama ekranları" },
       { name: "TypeScript", role: "Arayüzden API'ye kadar tek dil" },
       { name: "NestJS", role: "Modüler monolit API ve iş kuralları" },
-      { name: "PostgreSQL", role: "Dosyalar, süreç geçmişi ve kayıtlar" },
+      { name: "PostgreSQL", role: "Gönderiler, süreç geçmişi ve kayıtlar" },
       { name: "Prisma", role: "Şema, migration ve tip güvenli sorgular" },
       { name: "Redis", role: "Önbellek ve işlem kilitleri" },
       { name: "BullMQ", role: "Zamanlanmış, yeniden denenen arka plan işleri" },
@@ -80,26 +80,26 @@ export const defaultContent: SiteContent = {
     tour: [
       {
         screen: "pools",
-        title: "Her dosya kendi havuzunda",
-        text: "Dosyalar tebligat, itiraz, kesinleşme ya da haciz durumuna göre kendiliğinden doğru havuza düşüyor. Personel neye bakacağını aramıyor, kendi listesini açıyor.",
-        points: ["Durum değişince dosya kendiliğinden doğru havuza geçer", "Satırlar arasında klavyeyle gezinme, Enter ile açma", "Tebligat ve haciz gelişmeleri satıra kendiliğinden işlenir"],
+        title: "Her gönderi kendi havuzunda",
+        text: "Gönderiler dağıtım, iade, teslim ya da faturalama durumuna göre kendiliğinden doğru havuza düşüyor. Personel neye bakacağını aramıyor, kendi listesini açıyor.",
+        points: ["Durum değişince gönderi kendiliğinden doğru havuza geçer", "Satırlar arasında klavyeyle gezinme, Enter ile açma", "Teslimat ve fatura gelişmeleri satıra kendiliğinden işlenir"],
       },
       {
         screen: "address",
         title: "Adres bulunana kadar sırayla deneme",
-        text: "Tebligat iade dönünce sistem yeni adresi bir merdiven gibi sırayla farklı kaynaklarda arıyor. Her basamağın sonucu ve zamanı kaydediliyor, sıradaki adım ekranda görünüyor.",
-        points: ["Kaynaklar belirli bir sırayla, tekrar etmeden denenir", "Her sorgunun sonucu ve saati dosyada saklanır", "İtiraz gelen dosyada araştırma kendiliğinden durur"],
+        text: "Gönderi teslim edilemeyince sistem doğru adresi bir merdiven gibi sırayla farklı kaynaklarda arıyor. Her basamağın sonucu ve zamanı kaydediliyor, sıradaki adım ekranda görünüyor.",
+        points: ["Kaynaklar belirli bir sırayla, tekrar etmeden denenir", "Her sorgunun sonucu ve saati gönderide saklanır", "İade istenen gönderide araştırma kendiliğinden durur"],
       },
       {
         screen: "operations",
         title: "Toplu gönderim, kontrollü ve maliyeti belli",
         text: "Gönderilecek işlemler gönderilebilir, bekletilen ve engellenen olarak ayrışıyor. Otomatik gönderim belirlenen saat aralığında çalışıyor ve her işlemin tutarı göndermeden önce görünüyor.",
-        points: ["İşlemler gönderilebilir, bekletilen ve engellenen olarak ayrışır", "Otomatik gönderim belirlenen saat aralığında, sırayla", "Aynı dosyaya ikinci gönderim kilitlenir, harcama bütçeyle sınırlı"],
+        points: ["İşlemler gönderilebilir, bekletilen ve engellenen olarak ayrışır", "Otomatik gönderim belirlenen saat aralığında, sırayla", "Aynı gönderiye ikinci atama kilitlenir, harcama bütçeyle sınırlı"],
       },
       {
         screen: "monitoring",
         title: "Dış sistemlerle her konuşma kayıt altında",
-        text: "Entegrasyonlara giden her istek sonucu ve süresiyle canlı olarak izleniyor. Her projenin bütün dosyalarının kaç günde bir baştan sona okunduğu da ölçülüyor.",
+        text: "Entegrasyonlara giden her istek sonucu ve süresiyle canlı olarak izleniyor. Her projenin bütün gönderilerinin kaç günde bir baştan sona tarandığı da ölçülüyor.",
         points: ["Her isteğin sonucu ve süresi canlı akışta", "Proje bazında tam tur süresi", "Harcama, Redis ve servis sağlığı tek ekranda"],
       },
     ],
@@ -110,8 +110,8 @@ export const defaultContent: SiteContent = {
         description: "Birbirini etkileyen süreçleri; durum geçişleri, ön koşullar ve bekleme adımlarıyla modellenen bir uygulama mimarisinde birleştiriyorum.",
         items: [
           { title: "Durum ve bağımlılık yönetimi", description: "Bir süreçteki değişikliğin diğer görevleri durdurmasını, bekletmesini veya yeniden başlatmasını merkezi iş kurallarıyla yönetiyorum." },
-          { title: "Belge ve işlem durumu takibi", description: "Dosyaya gelen belgeleri, tensip durumlarını ve bekleyen işlemleri operasyon ekranlarıyla ilişkilendiriyor; sonraki adımın ekip tarafından takip edilmesini sağlıyorum." },
-          { title: "Takvim ve süre hesaplama", description: "Tarih, takvim istisnaları ve süreç durumlarını birlikte değerlendiren hesaplama bileşenleri geliştiriyor; hesaplamanın girdilerini ve dayanaklarını kaydediyorum." },
+          { title: "Belge ve işlem durumu takibi", description: "Gönderiye gelen irsaliye ve teslim belgelerini, yükleme durumlarını ve bekleyen işlemleri operasyon ekranlarıyla ilişkilendiriyor; sonraki adımın ekip tarafından takip edilmesini sağlıyorum." },
+          { title: "Takvim ve süre hesaplama", description: "Teslim süreleri, takvim istisnaları ve süreç durumlarını birlikte değerlendiren hesaplama bileşenleri geliştiriyor; hesaplamanın girdilerini ve dayanaklarını kaydediyorum." },
           { title: "İstisna yönetimi", description: "Standart akışın dışında kalan durumları ayrı iş adımlarına dönüştürüyor; inceleme gerektiren kayıtları personelin iş havuzuna aktarıyorum." },
         ],
       },
@@ -121,7 +121,7 @@ export const defaultContent: SiteContent = {
         description: "Farklı biçimlerde yazılmış kayıtların benzerliğini değerlendiren yapay zekâ destekli karşılaştırmayı, kural tabanlı kontroller ve insan incelemesiyle birleştiriyorum.",
         items: [
           { title: "Kayıt kalitesi ve karşılaştırma", description: "Adres karşılaştırma senaryolarında yazım farklılıklarını ve eksik alanları ele alıyor; karşılaştırma sonuçlarını geçmiş işlem kayıtlarıyla birlikte değerlendiriyorum." },
-          { title: "Belirsiz sonuçların yönetimi", description: "Belirsiz sonuçları otomatik olarak kesinleştirmek yerine operatör incelemesine aktaran bir akış geliştiriyorum. Model çıktısını uygulama içindeki kontrol adımlarından geçiriyorum." },
+          { title: "Belirsiz sonuçların yönetimi", description: "Belirsiz sonuçları otomatik olarak onaylamak yerine operatör incelemesine aktaran bir akış geliştiriyorum. Model çıktısını uygulama içindeki kontrol adımlarından geçiriyorum." },
         ],
       },
       {
@@ -139,7 +139,7 @@ export const defaultContent: SiteContent = {
         description: "Arka plan süreçlerini, bekleyen kararları ve personel görevlerini ortak bir iş havuzunda görünür hale getiriyorum.",
         items: [
           { title: "Görev ve gecikme takibi", description: "İş türü, proje, süreç adımı ve bekleme süresine göre filtreler geliştiriyorum. Görevlerin kimde beklediği ve hangi adımların geciktiği izlenebiliyor." },
-          { title: "Tek ekranda süreç bağlamı", description: "Mevcut durum, sıradaki iş ve geçmiş hareketlerin zaman çizelgesini aynı dosya ekranında sunarak personelin işlem bağlamını takip etmesini kolaylaştırıyorum." },
+          { title: "Tek ekranda süreç bağlamı", description: "Mevcut durum, sıradaki iş ve geçmiş hareketlerin zaman çizelgesini aynı gönderi ekranında sunarak personelin işlem bağlamını takip etmesini kolaylaştırıyorum." },
         ],
       },
       {

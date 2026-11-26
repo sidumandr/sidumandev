@@ -73,7 +73,7 @@ export default function Hero({ hero, flagship, contact, appearance, images }: {
           </a>
         </div>
         <figure className={styles.shot}>
-          <ScreenFrame path="operasyon-paneli / genel-bakış" label="Ana projenin genel bakış ekranı: toplam dosya sayısı, kesinleşme oranı ve dosyaların aşamalar boyunca ilerleyişi. Veriler örnektir." height={860} glass>
+          <ScreenFrame path="operasyon-paneli / genel-bakış" label="Ana projenin genel bakış ekranı: toplam gönderi sayısı, teslim oranı ve gönderilerin aşamalar boyunca ilerleyişi. Veriler örnektir." height={860} glass>
             <OverviewScreen />
           </ScreenFrame>
           <figcaption className={styles.caption}><MockDataNote /></figcaption>

@@ -13,7 +13,7 @@ const saveSeo = saveContent.bind(null, "seo");
 const saveFlagship = saveContent.bind(null, "flagship");
 
 const tourScreenLabels: Record<TourScreenId, string> = {
-  pools: "Dosya havuzları",
+  pools: "Gönderi havuzları",
   address: "Adres araştırma merdiveni",
   operations: "Toplu gönderim",
   monitoring: "Canlı izleme",

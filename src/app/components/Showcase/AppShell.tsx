@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useRef, type ReactNode } from "react";
 import {
-  Ban, Banknote, BarChart3, Bell, ChevronDown, ChevronRight, CircleCheck, Database, FileText, FolderOpen, Gavel,
-  LayoutDashboard, LineChart, ListChecks, Network, Palette, Search, Server, Settings, SlidersHorizontal, Terminal, Upload, UserSearch, Users,
+  Ban, Banknote, BarChart3, Bell, ChevronDown, ChevronRight, CircleCheck, Database, FileText, FolderOpen, Truck,
+  LayoutDashboard, LineChart, ListChecks, Network, Package, Palette, Search, Server, Settings, SlidersHorizontal, Terminal, Upload, UserSearch, Users,
   type LucideIcon,
 } from "lucide-react";
 import { poolCounts } from "./mock";
@@ -11,7 +11,7 @@ import styles from "./app.module.css";
 
 export type ShellNav = "overview" | "files" | "address" | "operations" | "monitoring" | `pool:${string}`;
 
-/** `indent` maddeler Ödeme Emri'nin altındadır; menü kapalıyken gizlenir. `toggle` açılır kapanır başlıktır. */
+/** `indent` maddeler Teslimat'ın altındadır; menü kapalıyken gizlenir. `toggle` açılır kapanır başlıktır. */
 interface NavItem { id?: ShellNav; label: string; icon?: LucideIcon; count?: number; chevron?: "right" | "down"; indent?: boolean; toggle?: boolean }
 interface NavGroup { heading?: { label: string; icon: LucideIcon }; items: NavItem[] }
 
@@ -20,21 +20,21 @@ const groups: NavGroup[] = [
   { items: [{ id: "overview", label: "Genel Bakış", icon: LayoutDashboard }] },
   { heading: { label: "Ana veri", icon: Database }, items: [{ label: "Veri Yükleme", icon: Upload, chevron: "right" }] },
   {
-    heading: { label: "İcra takip", icon: Gavel },
+    heading: { label: "Sevkiyat", icon: Truck },
     items: [
       { label: "Takip", icon: Network, chevron: "right" },
       { id: "files", label: "Ana Sayfa", icon: FolderOpen },
-      { label: "Ödeme Emri", icon: FileText, chevron: "down", toggle: true },
-      { label: "Kapalı Dosyalar", icon: Ban, indent: true },
-      { id: "address", label: "Adres-Sorgu", icon: Search, indent: true },
-      { label: "Tensip Takibi", icon: ListChecks, indent: true },
+      { label: "Teslimat", icon: Package, chevron: "down", toggle: true },
+      { label: "Kapanan Gönderiler", icon: Ban, indent: true },
+      { id: "address", label: "Adres Doğrulama", icon: Search, indent: true },
+      { label: "Yükleme Takibi", icon: ListChecks, indent: true },
       { label: "İş Havuzu", icon: FileText, indent: true },
       { label: "Personel İncelemesi", icon: ListChecks, indent: true },
-      { label: "İtiraz Türü Sırası", icon: ListChecks, indent: true },
+      { label: "İade Türü Sırası", icon: ListChecks, indent: true },
       ...poolCounts.map(pool => ({ id: `pool:${pool.label}` as ShellNav, label: pool.label, count: pool.count, indent: true })),
       { label: "Devam Eden Sorgu", icon: Search, count: 3 },
       { label: "Sorgu Sonuçları", icon: FileText, count: 1482 },
-      { label: "Haciz Süreci", icon: CircleCheck, chevron: "right" },
+      { label: "Dağıtım Süreci", icon: CircleCheck, chevron: "right" },
       { id: "operations", label: "İşlemler", icon: ListChecks },
       { label: "Raporlar", icon: BarChart3 },
       { label: "Masraf", icon: Banknote },
@@ -58,14 +58,14 @@ const groups: NavGroup[] = [
 ];
 
 /** Ana projenin açık temalı arayüz kabuğu; marka, alan adı ve kullanıcı bilgileri nötrdür. */
-export function AppShell({ active, children, updatedAt = "12.03.2026 14:20", paymentOrderOpen = true, bump }: {
+export function AppShell({ active, children, updatedAt = "12.03.2026 14:20", deliveryOpen = true, bump }: {
   active: ShellNav;
   /** Turda sayısı bir artan havuz; `on` olunca sayı değişir ve havuz ışığa alınabilir (`data-spot="pool"`). */
   bump?: { label: string; on: boolean };
   children: ReactNode;
   updatedAt?: string;
-  /** Ödeme Emri açık mı; kapalıyken altındaki başlıklar da menüde görünür. */
-  paymentOrderOpen?: boolean;
+  /** Teslimat menüsü açık mı; kapalıyken altındaki başlıklar da menüde görünür. */
+  deliveryOpen?: boolean;
 }) {
   const nav = useRef<HTMLElement>(null);
   const { glass } = useScreen();
@@ -76,7 +76,7 @@ export function AppShell({ active, children, updatedAt = "12.03.2026 14:20", pay
     const current = container?.querySelector<HTMLElement>("[data-active]");
     if (!container || !current) return;
     container.scrollTop = Math.max(0, current.offsetTop - container.clientHeight * 0.35);
-  }, [active, paymentOrderOpen]);
+  }, [active, deliveryOpen]);
 
   return (
     <div className={styles.app + (glass ? " " + styles.glass : "")}>
@@ -88,8 +88,8 @@ export function AppShell({ active, children, updatedAt = "12.03.2026 14:20", pay
               {group.heading && (
                 <span className={styles.navHeading}><group.heading.icon size={15} strokeWidth={1.8} />{group.heading.label}</span>
               )}
-              {group.items.filter(item => paymentOrderOpen || !item.indent).map(item => {
-                const chevron = item.toggle && !paymentOrderOpen ? "right" : item.chevron;
+              {group.items.filter(item => deliveryOpen || !item.indent).map(item => {
+                const chevron = item.toggle && !deliveryOpen ? "right" : item.chevron;
                 const isActive = item.id !== undefined && item.id === active;
                 const className = [
                   item.icon ? styles.navItem : styles.navPool,
@@ -118,7 +118,7 @@ export function AppShell({ active, children, updatedAt = "12.03.2026 14:20", pay
       </aside>
       <div className={styles.workspace}>
         <header className={styles.topbar}>
-          <span className={styles.search}><Search size={15} />Dosya no, borçlu ya da kimlik no ara</span>
+          <span className={styles.search}><Search size={15} />Gönderi no, alıcı ya da telefon ara</span>
           <span className={styles.topRight}>
             <span className={styles.topButton}><FolderOpen size={15} />Tüm projeler</span>
             <span className={styles.updated}>Son güncelleme: <b>{updatedAt}</b></span>

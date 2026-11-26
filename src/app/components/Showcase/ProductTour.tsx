@@ -27,17 +27,17 @@ const screens: Record<TourScreenId, { path: string; height: number; label: strin
   pools: {
     path: "operasyon-paneli / ana-sayfa",
     height: 780,
-    label: "Durumlarına göre havuzlara ayrılmış dosya listesi",
+    label: "Durumlarına göre havuzlara ayrılmış gönderi listesi",
     scenes: [
-      { spot: "flip", point: 0, say: "Tebliğ tamamlandı, dosya kendiliğinden Kesinleşti oldu" },
-      { spot: "pool", zoom: 2.3, click: true, point: 0, say: "Dosya Kesinleşme işlenmemiş havuzuna geçti" },
+      { spot: "flip", point: 0, say: "Teslimat onaylandı, gönderi kendiliğinden Teslim edildi oldu" },
+      { spot: "pool", zoom: 2.3, click: true, point: 0, say: "Gönderi Teslim işlenmemiş havuzuna geçti" },
       { spot: "row", focus: [760, 430], zoom: 1.4, cursor: false, keys: ["↓", "Enter"], caption: "top", point: 1, hold: 4800 },
       { spot: "outcome", point: 2 },
     ],
     render: () => <PoolsScreen />,
   },
   address: {
-    path: "operasyon-paneli / adres-sorgu",
+    path: "operasyon-paneli / adres-doğrulama",
     height: 780,
     label: "Adres kaynaklarının sırayla denendiği adres araştırma ekranı",
     scenes: [
@@ -72,7 +72,7 @@ const screens: Record<TourScreenId, { path: string; height: number; label: strin
   overview: {
     path: "operasyon-paneli / genel-bakış",
     height: 860,
-    label: "Toplam dosya, kesinleşme oranı ve dosyanın yolculuğu",
+    label: "Toplam gönderi, teslim oranı ve gönderinin yolculuğu",
     scenes: [
       { spot: "total", point: 0 },
       { spot: "journey", point: 1, hold: 4000 },
